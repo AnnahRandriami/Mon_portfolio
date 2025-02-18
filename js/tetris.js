@@ -1,13 +1,13 @@
 export const modalContent = `
 <div id="scoreTimer">
   <p id="gameOverMessage" style="display: none; color: red; font-size: 20px;">Game Over!</p>
-
   <div id="scoreDisplay" style="font-size: 15px; text-align: center; font-family: cursive, sans-serif; color: black;">
     Score: 0
   </div>
 </div>
 <div id="instruction">
-  <p style="text-align:center;"><strong>Utiliser les flèches <BR>du clavier :</strong></p>
+  <p style="text-align:center ;"><strong>Utiliser les 
+  <br> flèches du clavier :</strong></p>
   <p>⬅️: Déplacer à gauche</p>
   <p>➡️: Déplacer à droite</p>
   <p>⬆️: Tourner la pièce</p>
@@ -18,6 +18,9 @@ export const modalContent = `
 
 let gameInterval;
 let gameRunning = false;
+let score = 0;
+let comboMultiplier = 1;
+let linesCleared = 0;
 
 export function startGame() {
   const canvas = document.getElementById("tetris");
@@ -31,77 +34,67 @@ export function startGame() {
 
   const modalLeft = document.querySelector(".content-modal-left");
   const modalWidth = modalLeft.clientWidth;
-  const modalHeight = modalLeft.clientHeight;
 
   const COLUMNS = 15;
   const ROWS = 30;
+  const BLOCK_SIZE = Math.floor(modalWidth / COLUMNS);
 
-  // Ajuste la taille des blocs pour que cela soit plus lisse
-  const BLOCK_SIZE = Math.floor(
-    Math.min(canvas.width / COLUMNS, canvas.height / ROWS)
-  );
-
-  // Réinitialiser la taille du canvas à chaque fois
   canvas.width = BLOCK_SIZE * COLUMNS;
   canvas.height = BLOCK_SIZE * ROWS;
 
   const ctx = canvas.getContext("2d");
-
-  // Activer l'anti-aliasing pour éviter la pixellisation
-  ctx.imageSmoothingEnabled = true;
 
   if (!ctx) {
     console.error("Impossible d'obtenir le contexte du canvas");
     return;
   }
 
-  const COLORS = [null, "#000000"]; // Couleur des blocs
+  const COLORS = [null, "#000000"];
 
   const SHAPES = [
-    [[1, 1, 1, 1]], // I
+    [[1, 1, 1, 1]],
     [
       [1, 1],
       [1, 1],
-    ], // O
+    ],
     [
       [0, 1, 0],
       [1, 1, 1],
-    ], // T
+    ],
     [
       [1, 1, 0],
       [0, 1, 1],
-    ], // S
+    ],
     [
       [0, 1, 1],
       [1, 1, 0],
-    ], // Z
+    ],
     [
       [1, 0, 0],
       [1, 1, 1],
-    ], // L
+    ],
     [
       [0, 0, 1],
       [1, 1, 1],
-    ], // J
+    ],
   ];
 
   let board = Array.from({ length: ROWS }, () => Array(COLUMNS).fill(0));
   let currentPiece, currentPosition;
-  let score = 0;
 
   function startGameLoop() {
     generatePiece();
     drawBoard();
     gameInterval = setInterval(gameLoop, 500);
+    gameRunning = true;
+    gameOverMessage.style.display = "none";
+    score = 0;
+    updateScore();
   }
 
   function stopGame() {
-    if (gameInterval) {
-      clearInterval(gameInterval);
-      gameRunning = false;
-      gameOverMessage.style.display = "block";
-      gameOverMessage.innerText = "Game Over! Final Score: " + score; // Afficher le score final
-    }
+    clearInterval(gameInterval);
+    gameRunning = false;
   }
 
   function generatePiece() {
@@ -120,27 +113,13 @@ export function startGame() {
 
   function drawBoard() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#D8BFD8"; // Couleur de fond
+    ctx.fillStyle = "#D8BFD8";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     for (let row = 0; row < ROWS; row++) {
       for (let col = 0; col < COLUMNS; col++) {
         if (board[row][col]) {
-          ctx.fillStyle = COLORS[1];
-          ctx.fillRect(
-            col * BLOCK_SIZE,
-            row * BLOCK_SIZE,
-            BLOCK_SIZE,
-            BLOCK_SIZE
-          );
-          ctx.strokeStyle = "#FFFFFF";
-          ctx.strokeRect(
-            col * BLOCK_SIZE,
-            row * BLOCK_SIZE,
-            BLOCK_SIZE,
-            BLOCK_SIZE
-          );
+          drawBlock(col, row);
         }
       }
     }
@@ -148,28 +127,17 @@ export function startGame() {
     for (let row = 0; row < currentPiece.length; row++) {
       for (let col = 0; col < currentPiece[row].length; col++) {
         if (currentPiece[row][col]) {
-          ctx.fillStyle = COLORS[1];
-          ctx.fillRect(
-            (currentPosition.x + col) * BLOCK_SIZE,
-            (currentPosition.y + row) * BLOCK_SIZE,
-            BLOCK_SIZE,
-            BLOCK_SIZE
-          );
-          ctx.strokeStyle = "#FFFFFF";
-          ctx.strokeRect(
-            (currentPosition.x + col) * BLOCK_SIZE,
-            (currentPosition.y + row) * BLOCK_SIZE,
-            BLOCK_SIZE,
-            BLOCK_SIZE
-          );
+          drawBlock(currentPosition.x + col, currentPosition.y + row);
         }
       }
     }
   }
 
-  // Fonction pour mettre à jour le score
-  function updateScore() {
-    scoreDisplay.innerText = "Score: " + score;
+  function drawBlock(x, y) {
+    ctx.fillStyle = COLORS[1];
+    ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+    ctx.strokeStyle = "#FFFFFF";
+    ctx.strokeRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
   }
 
   function moveDown() {
@@ -193,14 +161,26 @@ export function startGame() {
   }
 
   function clearFullLines() {
+    let linesClearedThisTurn = 0;
+
     for (let row = ROWS - 1; row >= 0; row--) {
       if (board[row].every((cell) => cell !== 0)) {
+        linesClearedThisTurn++;
         board.splice(row, 1);
         board.unshift(Array(COLUMNS).fill(0));
-        score += 100; // Incrémenter le score
-        updateScore(); // Mettre à jour l'affichage du score
       }
     }
+
+    if (linesClearedThisTurn > 0) {
+      linesCleared += linesClearedThisTurn;
+      comboMultiplier = linesClearedThisTurn;
+      score += 100 * comboMultiplier;
+      updateScore();
+    }
+  }
+
+  function updateScore() {
+    scoreDisplay.innerText = "Score: " + score;
   }
 
   function isValidMove() {
@@ -224,26 +204,16 @@ export function startGame() {
       .reverse();
     const oldPiece = currentPiece;
     currentPiece = rotated;
-    if (!isValidMove()) {
-      currentPiece = oldPiece;
-    }
+    if (!isValidMove()) currentPiece = oldPiece;
   }
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") {
-      currentPosition.x--;
-      if (!isValidMove()) currentPosition.x++;
-    }
-    if (e.key === "ArrowRight") {
-      currentPosition.x++;
-      if (!isValidMove()) currentPosition.x--;
-    }
-    if (e.key === "ArrowDown") {
-      moveDown();
-    }
-    if (e.key === "ArrowUp") {
-      rotatePiece();
-    }
+    if (e.key === "ArrowLeft")
+      currentPosition.x--, !isValidMove() && currentPosition.x++;
+    if (e.key === "ArrowRight")
+      currentPosition.x++, !isValidMove() && currentPosition.x--;
+    if (e.key === "ArrowDown") moveDown();
+    if (e.key === "ArrowUp") rotatePiece();
   });
 
   function gameLoop() {
