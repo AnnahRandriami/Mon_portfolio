@@ -4,6 +4,9 @@ export const modalContent = `
   <div id="scoreDisplay" style="font-size: 15px; text-align: center; font-family: cursive, sans-serif; color: black;">
     Score: 0
   </div>
+  <div id="timeDisplay" style="font-size: 20px; color: black; position: absolute; top: 20px; left: 150px;">
+    Time: 00:00
+  </div>
 </div>
 <div id="instruction">
   <p style="text-align:center ;"><strong>Utiliser les 
