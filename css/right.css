@@ -1,0 +1,245 @@
+.allButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    z-index: 5;
+    position: absolute;
+    margin-left: 2%;
+    z-index: 1;
+}
+
+
+.head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: rgb(181, 107, 57);
+    background: radial-gradient(circle, rgba(181, 107, 57, 1) 55%, rgba(168, 110, 49, 1) 73%);
+    border: solid 1px black;
+    box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border-top: solid 10px black;
+    animation: float 3s ease-in-out infinite;
+}
+
+
+.globe-a {
+    background-color: black;
+    width: 30px;
+    height: 50px;
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+    animation: float 3s ease-in-out infinite;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.globe-b {
+    background-color: black;
+    width: 30px;
+    height: 50px;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    animation: float 3s ease-in-out infinite;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+
+
+
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.glass {
+    position: relative;
+    margin-top: 30px;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 100% 100%, 71% 89%, 29% 89%, 0 100%, 0% 43%, 17% 12%);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+
+}
+
+.line {
+    margin-top: 95px;
+    visibility: hidden;
+    width: 30px;
+    height: 8px;
+}
+
+.eye {
+    background-color: black;
+    width: 10px;
+    height: 10px;
+    border: solid 1px black;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.ball {
+    background-color: white;
+    width: 5px;
+    height: 5px;
+    border: solid 1px black;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 5px;
+}
+
+.mounth {
+    position: absolute;
+    width: 20px;
+    top: 60px;
+    margin: 50px;
+    background-color: red;
+    border: solid 1px black;
+}
+
+
+.nav {
+    height: 50px;
+    width: 50px;
+    background: rgb(140, 147, 204);
+    background: radial-gradient(circle, rgba(140, 147, 204, 1) 6%, rgba(68, 67, 153, 1) 73%);
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav:hover {
+    box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
+    height: 50px;
+    width: 100px;
+    border-radius: 10%;
+    opacity: 75%;
+    z-index: 1;
+    display: flex;
+}
+
+.text {
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+
+}
+
+.nav:hover .text {
+    visibility: visible;
+    opacity: 1;
+}
+
+i {
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 80%;
+}
+
+.btn-1 {
+    top: 100%;
+    left: 90%;
+}
+
+.btn-2 {
+    left: 90%;
+}
+
+.btn-3 {
+    left: 0%;
+    top: 50%;
+}
+
+.btn-4 {
+    left: 90%;
+    top: 0%;
+}
+
+.btn-5 {
+    left: 90%;
+    top: 75%;
+}
+
+.btn-6 {
+    left: 90%;
+    top: 85%;
+}
+
+.btn-7 {
+    left: 90%;
+    top: 25%;
+}
+
+.btn-8 {
+    left: 15%;
+    top: 15%;
+}
+
+.mooveContent {
+    opacity: 10%;
+    transition: all 0.3s ease;
+}
+
+.content-modal-right {
+    position: absolute;
+    width: 300px;
+    left: 120%;
+    min-width: fit-content;
+    height: auto;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(128, 128, 128, 0.7);
+    margin: 10px;
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.ear {
+    width: 200px;
+    height: 100px;
+    background-color: black;
+}
