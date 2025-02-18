@@ -1,11 +1,10 @@
 export const modalContent = `
 <div id="scoreTimer">
   <p id="gameOverMessage" style="display: none; color: red; font-size: 20px;">Game Over!</p>
-  <div id="scoreDisplay" style="font-size: 15px; text-align: center; font-family: cursive, sans-serif; color: black;">
+  <div id="scoreDisplay">
     Score: 0
   </div>
-  <div id="timeDisplay" style="font-size: 20px; color: black; position: absolute; top: 20px; left: 150px;">
-    Time: 00:00
+  <div id="timeDisplay">
   </div>
 </div>
 <div id="instruction">

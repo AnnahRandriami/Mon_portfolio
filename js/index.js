@@ -114,6 +114,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalLeft = document.querySelector(".content-modal-left");
   const modalText = document.getElementById("modal-text");
   const closeModal = document.querySelector(".close-modal");
+  let timer; // Variable pour stocker le timer
+  let seconds = 0; // Variable pour compter les secondes
+
+  // Fonction pour afficher les secondes dans l'élément de la modale
+  function updateTimerDisplay() {
+    const timerElement = document.getElementById("timeDisplay");
+    if (timerElement) {
+      timerElement.textContent = `Timer : ${seconds} s`;
+    }
+  }
 
   // Gestion de l'ouverture de la modale
   document.querySelectorAll(".open-modal").forEach((icon) => {
@@ -130,11 +140,20 @@ document.addEventListener("DOMContentLoaded", function () {
       if (dataFile) {
         import(`./${dataFile}`)
           .then((module) => {
-            modalText.textContent = module.modalContent; // Remplir le texte du modal
-            modalText.innerHTML = module.modalContent; // On insère le canvas ici
-            modalLeft.classList.add("show"); // Ajouter la classe "show" pour afficher
+            modalText.innerHTML = module.modalContent; // Insérer le contenu
+            modalLeft.classList.add("show"); // Afficher la modale
+
+            // Initialiser et démarrer le timer dès l'ouverture de la modale
+            seconds = 0; // Réinitialiser le compteur de secondes
+            updateTimerDisplay(); // Mettre à jour l'affichage du timer
+            timer = setInterval(() => {
+              seconds++; // Incrémenter les secondes
+              updateTimerDisplay();
+              checkGameOver(); // Mettre à jour l'affichage du timer
+            }, 1000);
+
             if (module.startGame) {
-              module.startGame(); // Démarre le jeu en appelant une fonction dans le module importé
+              module.startGame(); // Démarre le jeu si présent
             }
           })
           .catch((error) =>
@@ -147,14 +166,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fermeture de la modale via le bouton de fermeture
   if (closeModal) {
     closeModal.addEventListener("click", function () {
-      modalLeft.classList.remove("show"); // Supprimer la classe "show" pour masquer la modale
+      modalLeft.classList.remove("show"); // Masquer la modale
+      clearInterval(timer); // Stopper le timer si la modale est fermée
     });
   }
 
-  // Fermeture de la modale en cliquant à l'extérieur
-  window.addEventListener("click", function (event) {
-    if (event.target === modalLeft) {
-      modalLeft.classList.remove("show"); // Supprimer la classe "show" pour masquer la modale
+  function checkGameOver() {
+    // Vérifie si le message "Game Over" est visible
+    if (gameOverMessage && gameOverMessage.style.display !== "none") {
+      clearInterval(timer); // Arrêter le timer si le message de fin de jeu est affiché
+      console.log("Le jeu est terminé, timer arrêté !");
     }
-  });
+  }
 });
