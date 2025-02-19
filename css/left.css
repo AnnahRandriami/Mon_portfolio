@@ -182,5 +182,8 @@
     top: 35%;
     left: 10px;
     font-size: 12px;
+}
 
+#gameImage {
+    width: 40px;
 }

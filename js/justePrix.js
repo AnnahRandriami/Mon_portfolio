@@ -1,63 +1,66 @@
-// justePrix.js
+export const modalContent = `
+  <p id="gameOverMessage" style="display: none; color: red; font-size: 20px;">Game Over!</p>
+  <h2>Jeu du Juste Prix</h2>
+  <div id="imageContainer">
+    <button id="prevImage">&#8592;</button>
+    <img id="gameImage" src="image/yellow-6556408_1280.jpg" alt="Image du jeu" />
+    <button id="nextImage">&#8594;</button>
+  </div>
+  <p>Devinez le prix !</p>
+  <input type="number" id="guess" placeholder="Entrez un prix entre 1 et 100" />
+  <button id="submitGuess">Valider</button>
+  <p id="result"></p>
+  <p id="attempts">Nombre d'essais restants : 10</p>
+  <p id="price">Prix de l'image : 0€</p> <!-- Affichage du prix -->
+`;
+document.addEventListener("DOMContentLoaded", () => {
+  // Injection du contenu modalContent dans le DOM si nécessaire
 
-export const modalContent = document.createElement("div"); // Créer un nouvel élément div pour contenir le jeu
+  const images = [
+    "image/watercolor.jpg", // Chemin relatif vers le dossier 'images'
+    "image/yellow-6556408_1280.jpg",
+  ];
 
-export function startGame() {
-  // Générer un prix aléatoire entre 1 et 100
-  const correctPrice = Math.floor(Math.random() * 100) + 1;
+  const prices = [
+    20, // Prix associé à "image/watercolor.jpg"
+    35, // Prix associé à "image/yellow-6556408_1280.jpg"
+  ];
 
-  // Ajouter le HTML du jeu à modalContent
-  modalContent.innerHTML = `
-    <h2>Jeu du Juste Prix</h2>
-    <p>Devinez le prix !</p>
-    <input type="number" id="guess" placeholder="Entrez un prix entre 1 et 100" />
-    <button id="submitGuess">Valider</button>
-    <p id="result"></p>
-    <p id="attempts">Nombre d'essais restants : 10</p>
-  `;
+  let currentImageIndex = 0;
 
-  const submitButton = modalContent.querySelector("#submitGuess");
-  const result = modalContent.querySelector("#result");
-  const guessInput = modalContent.querySelector("#guess");
-  const attemptsDisplay = modalContent.querySelector("#attempts");
+  // Sélectionner les éléments
+  const gameImage = document.getElementById("gameImage");
+  const prevButton = document.getElementById("prevImage");
+  const nextButton = document.getElementById("nextImage");
+  const priceDisplay = document.getElementById("price");
 
-  let attemptsLeft = 10; // Nombre d'essais maximum
+  // Fonction pour afficher le prix de l'image actuelle
+  function updatePrice() {
+    priceDisplay.textContent = `Prix de l'image : ${prices[currentImageIndex]}€`;
+  }
 
-  submitButton.addEventListener("click", function () {
-    const userGuess = parseInt(guessInput.value);
+  // Initialisation du prix au début du jeu
+  updatePrice();
 
-    // Vérification que l'utilisateur entre un nombre
-    if (isNaN(userGuess)) {
-      result.textContent = "Veuillez entrer un nombre valide !";
-      result.style.color = "red";
-      return;
-    }
-
-    attemptsLeft--; // Décrémenter le nombre d'essais à chaque tentative
-
-    if (userGuess === correctPrice) {
-      result.textContent = `Bravo, vous avez trouvé le bon prix (${correctPrice}) !`;
-      result.style.color = "green";
-      attemptsDisplay.textContent = "Félicitations, vous avez gagné !";
-      submitButton.disabled = true; // Désactiver le bouton après avoir trouvé la réponse
-    } else if (userGuess < correctPrice) {
-      result.textContent = "Le prix est plus grand, essayez encore !";
-      result.style.color = "orange";
-      attemptsDisplay.textContent = `Nombre d'essais restants : ${attemptsLeft}`;
-    } else {
-      result.textContent = "Le prix est plus petit, essayez encore !";
-      result.style.color = "orange";
-      attemptsDisplay.textContent = `Nombre d'essais restants : ${attemptsLeft}`;
-    }
-
-    // Si l'utilisateur n'a plus d'essais
-    if (attemptsLeft <= 0 && userGuess !== correctPrice) {
-      result.textContent = `Game Over ! Le prix était ${correctPrice}.`;
-      result.style.color = "red";
-      attemptsDisplay.textContent = "Vous avez épuisé tous vos essais.";
-      submitButton.disabled = true; // Désactiver le bouton après avoir épuisé les tentatives
-    }
+  // Fonction pour changer l'image précédente
+  prevButton.addEventListener("click", () => {
+    console.log("Clique sur précédent");
+    // Mettre à jour l'indice de l'image
+    currentImageIndex =
+      currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+    console.log("Image actuelle (précédente) :", currentImageIndex);
+    gameImage.src = images[currentImageIndex]; // Mise à jour de l'image
+    updatePrice(); // Mise à jour du prix
   });
-}
 
-startGame();
+  // Fonction pour changer l'image suivante
+  nextButton.addEventListener("click", () => {
+    console.log("Clique sur suivant");
+    // Mettre à jour l'indice de l'image
+    currentImageIndex =
+      currentImageIndex === images.length - 1 ? 0 : currentImageIndex + 1;
+    console.log("Image actuelle (suivante) :", currentImageIndex);
+    gameImage.src = images[currentImageIndex]; // Mise à jour de l'image
+    updatePrice(); // Mise à jour du prix
+  });
+});

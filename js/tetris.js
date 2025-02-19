@@ -1,15 +1,11 @@
 export const modalContent = `
 <div id="scoreTimer">
   <p id="gameOverMessage" style="display: none; color: red; font-size: 20px;">Game Over!</p>
-  <div id="scoreDisplay">
-    Score: 0
-  </div>
-  <div id="timeDisplay">
-  </div>
+  <div id="scoreDisplay">Score: 0</div>
+  <div id="timeDisplay"></div>
 </div>
 <div id="instruction">
-  <p style="text-align:center ;"><strong>Utiliser les 
-  <br> flèches du clavier :</strong></p>
+  <p style="text-align:center;"><strong>Utiliser les flèches du clavier :</strong></p>
   <p>⬅️: Déplacer à gauche</p>
   <p>➡️: Déplacer à droite</p>
   <p>⬆️: Tourner la pièce</p>
@@ -21,8 +17,8 @@ export const modalContent = `
 let gameInterval;
 let gameRunning = false;
 let score = 0;
-let comboMultiplier = 1;
 let linesCleared = 0;
+let lastUpdateTime = Date.now();
 
 export function startGame() {
   const canvas = document.getElementById("tetris");
@@ -51,7 +47,7 @@ export function startGame() {
     return;
   }
 
-  const COLORS = [null, "#000000"];
+  const COLORS = ["#000000"];
 
   const SHAPES = [
     [[1, 1, 1, 1]],
@@ -97,6 +93,7 @@ export function startGame() {
   function stopGame() {
     clearInterval(gameInterval);
     gameRunning = false;
+    document.removeEventListener("keydown", handleKeyDown);
   }
 
   function generatePiece() {
@@ -136,7 +133,7 @@ export function startGame() {
   }
 
   function drawBlock(x, y) {
-    ctx.fillStyle = COLORS[1];
+    ctx.fillStyle = COLORS[0];
     ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
     ctx.strokeStyle = "#FFFFFF";
     ctx.strokeRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
@@ -175,8 +172,7 @@ export function startGame() {
 
     if (linesClearedThisTurn > 0) {
       linesCleared += linesClearedThisTurn;
-      comboMultiplier = linesClearedThisTurn;
-      score += 100 * comboMultiplier;
+      score += 100 * linesClearedThisTurn;
       updateScore();
     }
   }
@@ -209,18 +205,25 @@ export function startGame() {
     if (!isValidMove()) currentPiece = oldPiece;
   }
 
-  document.addEventListener("keydown", (e) => {
+  function handleKeyDown(e) {
     if (e.key === "ArrowLeft")
       currentPosition.x--, !isValidMove() && currentPosition.x++;
     if (e.key === "ArrowRight")
       currentPosition.x++, !isValidMove() && currentPosition.x--;
     if (e.key === "ArrowDown") moveDown();
     if (e.key === "ArrowUp") rotatePiece();
-  });
+    drawBoard();
+  }
+
+  document.addEventListener("keydown", handleKeyDown);
 
   function gameLoop() {
-    moveDown();
-    drawBoard();
+    let now = Date.now();
+    if (now - lastUpdateTime > 500) {
+      moveDown();
+      drawBoard();
+      lastUpdateTime = now;
+    }
   }
 
   startGameLoop();

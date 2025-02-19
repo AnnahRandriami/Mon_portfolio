@@ -176,6 +176,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (gameOverMessage && gameOverMessage.style.display !== "none") {
       clearInterval(timer); // Arrêter le timer si le message de fin de jeu est affiché
       console.log("Le jeu est terminé, timer arrêté !");
+    } else {
+      console.log("le jeu continue");
     }
   }
 });
