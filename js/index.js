@@ -110,9 +110,10 @@ window.addEventListener("load", () => {
 });
 
 //left-modal
+let timerInterval = null;
 document.addEventListener("DOMContentLoaded", function () {
   const modalLeft = document.querySelector(".content-modal-left");
-  const modalText = document.getElementById("modal-text");
+  const modalContent = document.getElementById("modal-content");
   const closeModal = document.querySelector(".close-modal");
   let timer; // Variable pour stocker le timer
   let seconds = 0; // Variable pour compter les secondes
@@ -140,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (dataFile) {
         import(`./${dataFile}`)
           .then((module) => {
-            modalText.innerHTML = module.modalContent; // Insérer le contenu
+            modalContent.innerHTML = module.modalContent; // Insérer le contenu
             modalLeft.classList.add("show"); // Afficher la modale
 
             // Initialiser et démarrer le timer dès l'ouverture de la modale

@@ -19,6 +19,7 @@ let gameRunning = false;
 let score = 0;
 let linesCleared = 0;
 let lastUpdateTime = Date.now();
+let timerSpeed = 500; // Temps d'intervalle entre chaque descente de la pièce
 
 export function startGame() {
   const canvas = document.getElementById("tetris");
@@ -81,16 +82,27 @@ export function startGame() {
   let currentPiece, currentPosition;
 
   function startGameLoop() {
+    // Réinitialiser le jeu à chaque redémarrage
+    score = 0;
+    linesCleared = 0;
+    updateScore();
+
+    // Annuler l'ancien intervalle de jeu, si existant
+    if (gameInterval) {
+      clearInterval(gameInterval);
+    }
+
+    // Lancer le jeu avec un nouvel intervalle
     generatePiece();
     drawBoard();
-    gameInterval = setInterval(gameLoop, 500);
+    gameInterval = setInterval(gameLoop, timerSpeed);
     gameRunning = true;
     gameOverMessage.style.display = "none";
-    score = 0;
-    updateScore();
+    document.addEventListener("keydown", handleKeyDown);
   }
 
   function stopGame() {
+    // Arrêter l'intervalle du jeu
     clearInterval(gameInterval);
     gameRunning = false;
     document.removeEventListener("keydown", handleKeyDown);
@@ -115,6 +127,7 @@ export function startGame() {
     ctx.fillStyle = "#D8BFD8";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    // Dessiner les blocs présents sur le plateau
     for (let row = 0; row < ROWS; row++) {
       for (let col = 0; col < COLUMNS; col++) {
         if (board[row][col]) {
@@ -123,6 +136,7 @@ export function startGame() {
       }
     }
 
+    // Dessiner la pièce actuelle
     for (let row = 0; row < currentPiece.length; row++) {
       for (let col = 0; col < currentPiece[row].length; col++) {
         if (currentPiece[row][col]) {
@@ -160,21 +174,42 @@ export function startGame() {
   }
 
   function clearFullLines() {
-    let linesClearedThisTurn = 0;
+    let fullLines = [];
 
-    for (let row = ROWS - 1; row >= 0; row--) {
+    // Détection des lignes complètes
+    for (let row = 0; row < ROWS; row++) {
       if (board[row].every((cell) => cell !== 0)) {
-        linesClearedThisTurn++;
-        board.splice(row, 1);
-        board.unshift(Array(COLUMNS).fill(0));
+        fullLines.push(row);
       }
     }
 
-    if (linesClearedThisTurn > 0) {
-      linesCleared += linesClearedThisTurn;
-      score += 100 * linesClearedThisTurn;
+    // Si on trouve des lignes complètes
+    if (fullLines.length > 0) {
+      // Animation facultative avant suppression
+      fullLines.forEach((lineIndex) => animateLineClear(lineIndex));
+
+      // Créer un nouveau board sans les lignes complètes
+      let newBoard = board.filter((_, index) => !fullLines.includes(index));
+
+      // Ajouter de nouvelles lignes vides en haut pour compenser les suppressions
+      while (newBoard.length < ROWS) {
+        newBoard.unshift(Array(COLUMNS).fill(0));
+      }
+
+      // Remplace l'ancien board par le nouveau
+      board = newBoard;
+
+      // Mise à jour du score avec bonus progressif
+      const points = [0, 100, 300, 500, 800];
+      score += points[fullLines.length];
+      linesCleared += fullLines.length;
       updateScore();
     }
+  }
+
+  // Fonction d'animation (optionnelle)
+  function animateLineClear(lineIndex) {
+    console.log(`Animation pour la ligne ${lineIndex}`);
   }
 
   function updateScore() {
@@ -215,11 +250,9 @@ export function startGame() {
     drawBoard();
   }
 
-  document.addEventListener("keydown", handleKeyDown);
-
   function gameLoop() {
     let now = Date.now();
-    if (now - lastUpdateTime > 500) {
+    if (now - lastUpdateTime > timerSpeed) {
       moveDown();
       drawBoard();
       lastUpdateTime = now;
