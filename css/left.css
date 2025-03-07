@@ -85,7 +85,10 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+
 }
+
+
 
 #tetris {
     width: 225px;

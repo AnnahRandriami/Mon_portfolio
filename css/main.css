@@ -13,20 +13,49 @@ body {
     justify-content: center;
     background-attachment: fixed;
     gap: 20px;
+    visibility: hidden;
+    /* Commence caché */
+    opacity: 0;
+    transform: translateY(-100vh);
+    /* Commence en haut de l'écran */
+    animation: plouf 2s ease-out forwards;
 }
+
+/* Animation de descente avec rebond */
+@keyframes plouf {
+    0% {
+        transform: translateY(-100vh);
+        /* Commence en haut */
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(10px);
+        /* Légèrement rebondi */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        /* Position finale */
+        opacity: 1;
+    }
+}
+
 
 
 .loader {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: black;
+    background-image: url('/image/landscape-7283516_1280.jpg');
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 5;
     opacity: 1;
-    transition: opacity 2s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 .hidden {
@@ -36,11 +65,11 @@ body {
 
 .lettre {
     font-family: Impact, Charcoal, sans-serif;
-    color: aqua;
+    color: rgb(54, 27, 128);
     font-size: 1em;
     letter-spacing: 15px;
     margin-bottom: 150px;
-    animation: flash 2s linear infinite;
+    animation: flash 1.5s linear infinite;
 }
 
 @keyframes flash {
@@ -104,4 +133,3 @@ body {
     width: 10px;
 
 }
-
