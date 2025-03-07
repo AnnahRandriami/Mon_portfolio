@@ -13,20 +13,26 @@ body {
     justify-content: center;
     background-attachment: fixed;
     gap: 20px;
+    visibility: visible;
+    opacity: 0;
 }
+
+
+
 
 
 .loader {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: black;
+    background-image: url('/image/landscape-7283516_1280.jpg');
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 5;
     opacity: 1;
-    transition: opacity 2s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .hidden {
@@ -36,11 +42,11 @@ body {
 
 .lettre {
     font-family: Impact, Charcoal, sans-serif;
-    color: aqua;
+    color: rgb(54, 27, 128);
     font-size: 1em;
     letter-spacing: 15px;
     margin-bottom: 150px;
-    animation: flash 2s linear infinite;
+    animation: flash 1.5s linear infinite;
 }
 
 @keyframes flash {
@@ -104,4 +110,3 @@ body {
     width: 10px;
 
 }
-

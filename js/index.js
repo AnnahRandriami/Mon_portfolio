@@ -2,9 +2,13 @@ let eyes = document.getElementsByClassName("eye");
 let mounth = document.getElementsByClassName("mounth");
 let glass = document.getElementsByClassName("glass");
 let ball = document.getElementsByClassName("ball");
+const navButtons = document.querySelectorAll(".nav");
+const navButtonsLeft = document.querySelectorAll(".right");
+const addContentLeft = document.querySelector(".content-modal-right");
 let mouseMoveTimeout;
 const delay = 1000;
 
+//Animation tete flottante
 document.onmousemove = function () {
   let x = (event.clientX * 100) / window.innerWidth + "%";
   let y = (event.clientY * 100) / window.innerHeight + "%";
@@ -52,9 +56,7 @@ document.onmousemove = function () {
   }, delay);
 };
 
-const navButtons = document.querySelectorAll(".nav");
-
-// Parcourir tous les boutons de navigation
+// Parcourir tous les boutons partie droite
 navButtons.forEach((button) => {
   button.addEventListener("mouseenter", () => {
     const icon = button.querySelector(".icon");
@@ -62,20 +64,17 @@ navButtons.forEach((button) => {
 
     if (icon) {
       icon.style.visibility = "hidden";
-      text.style.visibility = "visible"; // Cache l'icône
+      text.style.visibility = "visible";
     }
   });
 
-  // Quand la souris quitte : afficher l'icône
   button.addEventListener("mouseleave", () => {
     const icon = button.querySelector(".icon");
     if (icon) {
       icon.style.visibility = "visible";
-      // Rétablit la visibilité
     }
   });
 });
-
 navButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const icon = button.querySelector(".icon");
@@ -86,39 +85,66 @@ navButtons.forEach((button) => {
   });
 });
 
-const navButtonsLeft = document.querySelectorAll(".right");
-const addContentLeft = document.querySelector(".content-modal-right");
-
+//Recupération, affichage et gestion du texte pour chaque bouton droit
 navButtonsLeft.forEach((button) => {
   button.addEventListener("mouseenter", () => {
     if (navButtonsLeft) {
       addContentLeft.style.visibility = "visible";
-      addContentLeft.textContent = button.getAttribute("data-text"); // Récupère le texte du bouton
+      addContentLeft.textContent = button.getAttribute("data-text");
     }
   });
   button.addEventListener("mouseleave", () => {
     if (addContentLeft) {
-      addContentLeft.style.visibility = "hidden"; // Cache la boîte quand la souris part
+      addContentLeft.style.visibility = "hidden";
     }
   });
 });
 
-window.addEventListener("load", () => {
+//Gestion du loader
+document.addEventListener("DOMContentLoaded", function () {
+  let loader = document.querySelector(".loader");
+  let animationElement = document.querySelector(".animation");
+  let myTools = document.querySelector(".my-tools");
+  let buttons = document.querySelectorAll(".nav");
+  let head = document.querySelector(".head");
+  let globeA = document.querySelector(".globe-a");
+  let globeB = document.querySelector(".globe-b");
+
   setTimeout(() => {
-    document.querySelector(".loader").classList.add("hidden");
-  }, 2000);
+    // Cache le loader et affiche l'animation principale
+    loader.classList.add("hidden");
+    animationElement.style.visibility = "visible";
+    animationElement.style.opacity = 1;
+
+    // 🛠️ Apparition progressive de my-tools après 500ms
+    setTimeout(() => {
+      myTools.classList.add("show");
+    }, 500);
+
+    setTimeout(() => {
+      head.classList.add("show");
+      globeA.classList.add("show");
+      globeB.classList.add("show");
+    }, 2000);
+
+    // 🎯 Apparition des boutons un par un
+    buttons.forEach((btn, index) => {
+      setTimeout(() => {
+        btn.classList.add(`show-btn-${index + 1}`);
+      }, index * 200); // Délai progressif entre chaque bouton
+    });
+  }, 2000); // Temps du loader (2s)
 });
 
-//left-modal
-let timerInterval = null;
+//Modal left
 document.addEventListener("DOMContentLoaded", function () {
   const modalLeft = document.querySelector(".content-modal-left");
   const modalContent = document.getElementById("modal-content");
   const closeModal = document.querySelector(".close-modal");
-  let timer; // Variable pour stocker le timer
-  let seconds = 0; // Variable pour compter les secondes
+  let timer;
+  let seconds = 0;
 
-  // Fonction pour afficher les secondes dans l'élément de la modale
+  // Affichage du timer en  les secondes dans l'élément de la modale
   function updateTimerDisplay() {
     const timerElement = document.getElementById("timeDisplay");
     if (timerElement) {
@@ -126,10 +152,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Gestion de l'ouverture de la modale
+  // Gestion de l'ouverture de la modale et recupération du html pour chaque boutton
   document.querySelectorAll(".open-modal").forEach((icon) => {
     icon.addEventListener("click", function () {
-      const parentDiv = this.closest("[data-js]"); // Récupérer l'élément parent
+      const parentDiv = this.closest("[data-js]");
 
       if (!parentDiv) {
         console.error("Aucun élément parent avec 'data-js' trouvé.");
@@ -141,20 +167,18 @@ document.addEventListener("DOMContentLoaded", function () {
       if (dataFile) {
         import(`./${dataFile}`)
           .then((module) => {
-            modalContent.innerHTML = module.modalContent; // Insérer le contenu
-            modalLeft.classList.add("show"); // Afficher la modale
-
-            // Initialiser et démarrer le timer dès l'ouverture de la modale
-            seconds = 0; // Réinitialiser le compteur de secondes
-            updateTimerDisplay(); // Mettre à jour l'affichage du timer
+            modalContent.innerHTML = module.modalContent;
+            modalLeft.classList.add("show");
+            seconds = 0;
+            updateTimerDisplay();
             timer = setInterval(() => {
-              seconds++; // Incrémenter les secondes
+              seconds++;
               updateTimerDisplay();
-              checkGameOver(); // Mettre à jour l'affichage du timer
+              checkGameOver();
             }, 1000);
 
             if (module.startGame) {
-              module.startGame(); // Démarre le jeu si présent
+              module.startGame();
             }
           })
           .catch((error) =>
@@ -167,15 +191,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fermeture de la modale via le bouton de fermeture
   if (closeModal) {
     closeModal.addEventListener("click", function () {
-      modalLeft.classList.remove("show"); // Masquer la modale
-      clearInterval(timer); // Stopper le timer si la modale est fermée
+      modalLeft.classList.remove("show");
+      clearInterval(timer);
     });
   }
 
+  //Affichage gameOver pour un jeu
   function checkGameOver() {
-    // Vérifie si le message "Game Over" est visible
     if (gameOverMessage && gameOverMessage.style.display !== "none") {
-      clearInterval(timer); // Arrêter le timer si le message de fin de jeu est affiché
+      clearInterval(timer);
       console.log("Le jeu est terminé, timer arrêté !");
     } else {
       console.log("le jeu continue");
