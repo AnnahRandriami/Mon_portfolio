@@ -8,7 +8,7 @@ const addContentLeft = document.querySelector(".content-modal-right");
 let mouseMoveTimeout;
 const delay = 1000;
 
-//Animatio tete flottante
+//Animation tete flottante
 document.onmousemove = function () {
   let x = (event.clientX * 100) / window.innerWidth + "%";
   let y = (event.clientY * 100) / window.innerHeight + "%";
@@ -56,7 +56,7 @@ document.onmousemove = function () {
   }, delay);
 };
 
-// Parcourir tous les boutons de navigation
+// Parcourir tous les boutons partie droite
 navButtons.forEach((button) => {
   button.addEventListener("mouseenter", () => {
     const icon = button.querySelector(".icon");
@@ -64,7 +64,7 @@ navButtons.forEach((button) => {
 
     if (icon) {
       icon.style.visibility = "hidden";
-      text.style.visibility = "visible"; // Cache l'icône
+      text.style.visibility = "visible";
     }
   });
 
@@ -85,7 +85,7 @@ navButtons.forEach((button) => {
   });
 });
 
-//Recupération, affichage et gestion du texte pour chaque bouton
+//Recupération, affichage et gestion du texte pour chaque bouton droit
 navButtonsLeft.forEach((button) => {
   button.addEventListener("mouseenter", () => {
     if (navButtonsLeft) {
@@ -104,12 +104,36 @@ navButtonsLeft.forEach((button) => {
 document.addEventListener("DOMContentLoaded", function () {
   let loader = document.querySelector(".loader");
   let animationElement = document.querySelector(".animation");
+  let myTools = document.querySelector(".my-tools");
+  let buttons = document.querySelectorAll(".nav");
+  let head = document.querySelector(".head");
+  let globeA = document.querySelector(".globe-a");
+  let globeB = document.querySelector(".globe-b");
 
   setTimeout(() => {
+    // Cache le loader et affiche l'animation principale
     loader.classList.add("hidden");
     animationElement.style.visibility = "visible";
     animationElement.style.opacity = 1;
-  }, 2000);
+
+    // 🛠️ Apparition progressive de my-tools après 500ms
+    setTimeout(() => {
+      myTools.classList.add("show");
+    }, 500);
+
+    setTimeout(() => {
+      head.classList.add("show");
+      globeA.classList.add("show");
+      globeB.classList.add("show");
+    }, 2000);
+
+    // 🎯 Apparition des boutons un par un
+    buttons.forEach((btn, index) => {
+      setTimeout(() => {
+        btn.classList.add(`show-btn-${index + 1}`);
+      }, index * 200); // Délai progressif entre chaque bouton
+    });
+  }, 2000); // Temps du loader (2s)
 });
 
 //Modal left
@@ -175,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //Affichage gameOver pour un jeu
   function checkGameOver() {
     if (gameOverMessage && gameOverMessage.style.display !== "none") {
-      clearInterval(timer); // Arrêter le timer si le message de fin de jeu est affiché
+      clearInterval(timer);
       console.log("Le jeu est terminé, timer arrêté !");
     } else {
       console.log("le jeu continue");

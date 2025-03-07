@@ -13,34 +13,11 @@ body {
     justify-content: center;
     background-attachment: fixed;
     gap: 20px;
-    visibility: hidden;
-    /* Commence caché */
+    visibility: visible;
     opacity: 0;
-    transform: translateY(-100vh);
-    /* Commence en haut de l'écran */
-    animation: plouf 2s ease-out forwards;
 }
 
-/* Animation de descente avec rebond */
-@keyframes plouf {
-    0% {
-        transform: translateY(-100vh);
-        /* Commence en haut */
-        opacity: 0;
-    }
 
-    50% {
-        transform: translateY(10px);
-        /* Légèrement rebondi */
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(0);
-        /* Position finale */
-        opacity: 1;
-    }
-}
 
 
 
@@ -55,7 +32,7 @@ body {
     align-items: center;
     z-index: 5;
     opacity: 1;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .hidden {
