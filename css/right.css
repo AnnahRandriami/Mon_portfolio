@@ -146,8 +146,8 @@
 .nav {
     height: 50px;
     width: 50px;
-    background: rgb(140, 147, 204);
-    background: radial-gradient(circle, rgba(140, 147, 204, 1) 6%, rgba(68, 67, 153, 1) 73%);
+    background: rgb(210, 108, 77);
+    background: radial-gradient(circle, rgb(233, 157, 103) 6%, rgb(212, 113, 14) 73%);
     position: absolute;
     border-radius: 50%;
     top: 50%;
@@ -202,43 +202,30 @@ a {
 }
 
 .btn-1 {
-    top: 100%;
-    left: 90%;
-}
-
-.btn-2 {
-    left: 90%;
-}
-
-.btn-3 {
-    left: 0%;
-    top: 50%;
-}
-
-.btn-4 {
-    left: 90%;
-    top: 0%;
-}
-
-.btn-5 {
-    left: 90%;
-    top: 75%;
-}
-
-.btn-6 {
-    left: 90%;
-    top: 85%;
+    top: 90%;
+    left: 160%;
 }
 
 .btn-7 {
-    left: 90%;
-    top: 25%;
+    top: 90%;
+    left: 120%;
 }
 
-.btn-8 {
-    left: 15%;
-    top: 15%;
+.btn-2 {
+    top: -10%;
+    left: 180%;
 }
+
+.btn-4 {
+    top: -10%;
+    left: 140%;
+}
+
+.btn-5 {
+    top: -10%;
+    left: 100%;
+}
+
 
 /* 🌟 Animation pour l'apparition progressive des boutons */
 @keyframes slide-in {
@@ -299,22 +286,52 @@ a {
     transition: all 0.3s ease;
 }
 
-.content-modal-right {
+.content-modal-right,
+.name {
     position: absolute;
     width: 300px;
-    left: 120%;
+    left: 105%;
     min-width: fit-content;
     height: auto;
     text-align: center;
     padding: 10px;
-    background-color: rgba(128, 128, 128, 0.7);
     margin: 10px;
     display: inline-block;
     border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    color: white;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.content-modal-right {
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(128, 128, 128, 0.7);
+    color: white;
+}
+
+.name {
+    top: 25%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(55, 115, 227, 0.7);
+    color: rgb(14, 13, 13);
+    transition: opacity 0.3s ease-in-out;
+
+}
+
+.name h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.name h2 {
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+.name h1,
+.name h2 {
+    margin: 0;
+    padding: 0;
 }
 
 .ear {

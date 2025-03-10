@@ -5,6 +5,7 @@ let ball = document.getElementsByClassName("ball");
 const navButtons = document.querySelectorAll(".nav");
 const navButtonsLeft = document.querySelectorAll(".right");
 const addContentLeft = document.querySelector(".content-modal-right");
+const myName = document.querySelector(".name");
 let mouseMoveTimeout;
 const delay = 1000;
 
@@ -90,12 +91,14 @@ navButtonsLeft.forEach((button) => {
   button.addEventListener("mouseenter", () => {
     if (navButtonsLeft) {
       addContentLeft.style.visibility = "visible";
+      myName.style.visibility = "hidden";
       addContentLeft.textContent = button.getAttribute("data-text");
     }
   });
   button.addEventListener("mouseleave", () => {
     if (addContentLeft) {
       addContentLeft.style.visibility = "hidden";
+      myName.style.visibility = "";
     }
   });
 });
