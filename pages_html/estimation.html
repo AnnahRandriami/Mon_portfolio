@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estimation.css">
+    <title>Estimation de l'effort de test</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Estimation de l'effort de test</h2>
+        <label for="method">Choisissez une méthode :</label>
+        <select id="method" onchange="showForm()">
+            <option value="">-- Sélectionnez --</option>
+            <option value="ratio">Estimation par ratio</option>
+            <option value="extrapolation">Extrapolation</option>
+            <option value="delphi">Delphi large bande</option>
+            <option value="three_point">Estimation à trois points</option>
+        </select>
+        <div id="form-container"></div>
+        <p id="result" class="result"></p>
+        <button class="close-btn" onclick="window.location.href='../index.html'">Fermer</button>
+    </div>
+   <script src="/js/estimation.js"></script>
+</body>
+</html>

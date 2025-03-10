@@ -322,3 +322,17 @@ a {
     height: 100px;
     background-color: black;
 }
+
+.icon-container {
+    position: absolute;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    visibility: hidden;
+    transition: visibility 0.3s ease-in-out;
+    width: 50px;
+}
+
+.icon-container i {
+    font-size: 24px;
+}

@@ -111,12 +111,10 @@ document.addEventListener("DOMContentLoaded", function () {
   let globeB = document.querySelector(".globe-b");
 
   setTimeout(() => {
-    // Cache le loader et affiche l'animation principale
     loader.classList.add("hidden");
     animationElement.style.visibility = "visible";
     animationElement.style.opacity = 1;
 
-    // 🛠️ Apparition progressive de my-tools après 500ms
     setTimeout(() => {
       myTools.classList.add("show");
     }, 500);
@@ -127,13 +125,12 @@ document.addEventListener("DOMContentLoaded", function () {
       globeB.classList.add("show");
     }, 2000);
 
-    // 🎯 Apparition des boutons un par un
     buttons.forEach((btn, index) => {
       setTimeout(() => {
         btn.classList.add(`show-btn-${index + 1}`);
-      }, index * 200); // Délai progressif entre chaque bouton
+      }, index * 200);
     });
-  }, 2000); // Temps du loader (2s)
+  }, 2000);
 });
 
 //Modal left
@@ -198,11 +195,141 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //Affichage gameOver pour un jeu
   function checkGameOver() {
+    const gameOverMessage = document.getElementById("gameOverMessage"); // Vérifie s'il existe
+
     if (gameOverMessage && gameOverMessage.style.display !== "none") {
       clearInterval(timer);
       console.log("Le jeu est terminé, timer arrêté !");
-    } else {
-      console.log("le jeu continue");
     }
+  }
+});
+
+// Fonction pour afficher la date locale
+function displayDate() {
+  const currentDate = new Date();
+  // Options pour afficher la date (jour de la semaine, mois, jour, année)
+  const dateOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
+  const formattedDate = currentDate.toLocaleDateString("fr-FR", dateOptions);
+  document.getElementById("date-time").textContent = `${formattedDate}`;
+}
+displayDate();
+
+//Animation meteo
+document.addEventListener("DOMContentLoaded", function () {
+  const apiKey = "cfd6068f95494a30b0c7af04fbfc7e16"; // Ta clé API Weatherbit
+  const weatherInfo = document.getElementById("weather-info");
+  const weatherAnimation = document.getElementById("weather-animation");
+
+  function updateWeatherUI(cityName, temperature, windSpeed) {
+    document.getElementById("city-name").textContent = `📍 ${cityName}`;
+    document.getElementById("temperature").textContent = `🌡️ ${temperature}°C`;
+    document.getElementById("wind-speed").textContent = `💨 ${windSpeed} km/h`;
+    // Effacer les classes précédentes
+    weatherAnimation.className = "";
+  }
+
+  function fetchWeather(lat, lon) {
+    const url = `https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lon}&key=${apiKey}&lang=fr&units=M`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        const weather = data.data[0];
+        updateWeatherUI(weather.city_name, weather.temp, weather.wind_spd);
+      })
+      .catch((error) => {
+        console.error(
+          "Erreur lors de la récupération des données météo:",
+          error
+        );
+      });
+  }
+
+  // Demande la géolocalisation
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        fetchWeather(position.coords.latitude, position.coords.longitude);
+      },
+      (error) => {
+        console.error("Erreur de géolocalisation:", error);
+        // Par défaut : météo de Marseille si refusé
+        fetchWeather(43.2965, 5.3698);
+      }
+    );
+  } else {
+    // Si la géolocalisation est désactivée, afficher la météo de Marseille
+    fetchWeather(43.2965, 5.3698);
+  }
+});
+
+//gestion du loader
+document.addEventListener("DOMContentLoaded", function () {
+  const loader = document.querySelector(".loader");
+  const animationElement = document.querySelector(".animation");
+  const myTools = document.querySelector(".my-tools");
+  const buttons = document.querySelectorAll(".nav");
+  const head = document.querySelector(".head");
+  const globeA = document.querySelector(".globe-a");
+  const globeB = document.querySelector(".globe-b");
+
+  const today = new Date().toLocaleDateString(); // Format de la date locale (ex: 10/03/2025)
+
+  // Vérifier si l'utilisateur a déjà vu le loader aujourd'hui
+  const lastVisit = localStorage.getItem("lastVisitDate");
+
+  if (lastVisit === today) {
+    // Si l'utilisateur est déjà venu aujourd'hui, on désactive le loader et on affiche directement l'animation
+    loader.classList.add("hidden");
+    animationElement.style.visibility = "visible";
+    animationElement.style.opacity = 1;
+
+    setTimeout(() => {
+      myTools.classList.add("show");
+    }, 500);
+
+    setTimeout(() => {
+      head.classList.add("show");
+      globeA.classList.add("show");
+      globeB.classList.add("show");
+    }, 2000);
+
+    buttons.forEach((btn, index) => {
+      setTimeout(() => {
+        btn.classList.add(`show-btn-${index + 1}`);
+      }, index * 200);
+    });
+  } else {
+    // Si c'est la première visite ou que c'est un jour différent, on affiche le loader normalement
+    setTimeout(() => {
+      loader.classList.add("hidden");
+      animationElement.style.visibility = "visible";
+      animationElement.style.opacity = 1;
+
+      setTimeout(() => {
+        myTools.classList.add("show");
+      }, 500);
+
+      setTimeout(() => {
+        head.classList.add("show");
+        globeA.classList.add("show");
+        globeB.classList.add("show");
+      }, 2000);
+
+      buttons.forEach((btn, index) => {
+        setTimeout(() => {
+          btn.classList.add(`show-btn-${index + 1}`);
+        }, index * 200);
+      });
+    }, 2000);
+
+    // Enregistrer la date de la première visite
+    localStorage.setItem("lastVisitDate", today);
   }
 });

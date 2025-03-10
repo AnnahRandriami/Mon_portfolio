@@ -9,7 +9,8 @@
    <link rel="stylesheet" href="./css/left.css">
    <link rel="stylesheet" href="./css/right.css">
 </head>
-<body> 
+<body>
+    <div id="weather-animation"></div> 
    <div class="loader">
 
 <span class="lettre">B</span>
@@ -30,9 +31,15 @@
        
     </div>
     <div class="my-tools">
-      <div class="search open-modal" data-js="search.js">
-            <input type="text" id="mySearch" class="search-input" placeholder="Rechercher...">
-            <button class="search-button">🔍</button>
+      <div class="search" >
+        <div class="date-time-display" id="date-time"></div>
+        <div class="weather">
+            <div id="weather-info">
+                <p id="city-name"></p>
+                <p id="temperature"></p>   
+                <p id="wind-speed"></p>
+            </div>
+        </div>
         </div>
        
      <div class="tetris" data-js="tetris.js">
@@ -40,19 +47,16 @@
       <i id="tetrisButton" class="fa-solid fa-gamepad font open-modal"></i>
      </div>  
 
-     <div class="calcul" data-js="calcul.js">
-       <p>Calculatrice</p>
-        <i class="fa-solid fa-calculator font open-modal"></i>
+     <div class="calcul" onclick="window.location.href='./pages_html/estimation.html'">
+       <p>Estimation de l'effort de test</p>
      </div>
   
      <div class="juste-prix" data-js="justePrix.js">
-       <p>Juste prix</p>
-       
-       <i class="fa-solid fa-question font open-modal"></i>
+       <p> Approche de test logiciel appliquée à Tetris</p>
      </div>
      <div class="pictures" data-js="pictures.js">
-       <p>Photos</p>
-       <i class="fa-solid fa-cat font open-modal"></i>
+       <p>Demonstation</p>
+       <i class="fa-solid fa-video font open-modal"></i>
 
      </div>
        
@@ -61,35 +65,38 @@
 
     <div class="allButton">
         <div class="content-modal-right">ici le contenu</div>
-        <div id = "btn-1" class="nav btn-1 left">
-            <i class="icon fa-solid fa-phone"></i>
-            <a class = "text" href="/trending" target="_blank">Contact</a>
+        <div id = "btn-1" class="nav btn-1 right" data-text="Cliquez pour obtenir mon cv détaillé">
+            <i class="icon fa-solid fa-download"></i>
+            <a class = "text" href="/document/CV_Annah_RANDRIAMITANDRINA_Testeur_Logiciel.pdf" target="_blank">CV complet</a>
         </div>
         <div class="nav btn-2 right" 
-        data-text="Après mes études, en 2015, j'ai été toxicologie
-        règlementaire pour une société qui été 
-        basé en France pendant trois ans.
-        
-        Ensuite, j'ai été responsable qualité pour une zone franche à Madagascar pendant deux ans, 
-        avant de venir emenager en France en Mars 2021.
-        Recherche et étude bibliographique" ><i class="icon fa-solid fa-briefcase"></i>
-            <a class = "text" href="/trending" target="_blank">Experiences professionnelle</a>
+        data-text="HTML, CSS , Javascript, mysql, SQL, Python" ><i class="icon fa-solid fa-briefcase"></i>
+            <a class = "text">Langages de programation</a>
         </div>
 
       
 
-        <div class="nav btn-4 right" data-text="Voici le texte du bouton 4"><i class="icon fa-solid fa-user"></i>
+        <div class="nav btn-4 right" data-text="Passionnée par l'univers technologique, 
+        j'ai choisi de me reconvertir pour mettre à profit mes compétences 
+        en méthodologie, rigueur et analyse, 
+        et ainsi contribuer au développement et à l'innovation
+         au sein d’une entreprise."><i class="icon fa-solid fa-user"></i>
             <div class = "text">A propos
            
             </div>
         </div>
 
-        <div id="btn-5" class="nav btn-5 right"><i class="icon fa-solid fa-book"></i>
-            <a class = "text" href="/trending" target="_blank">Formation</a>
-        </div>
+        <div id="btn-5" class="nav btn-5 right" 
+        data-icons="fa-bug fa-magnifying-glass fa-flask fa-clipboard-check">
+       <i class="icon fa-solid fa-star"></i>
+       <a class="text">Outils de test</a>
+   </div>
+   
 
-        <div class="nav btn-7 right" data-text="Voici le texte du bouton 7"><i class="icon fa-solid fa-graduation-cap"></i>
-            <a class = "text" href="/trending" target="_blank">Parcours académique</a>
+
+        <div class="nav btn-7 right" data-text="Certification ISTQB en cours, j'ai aussi fait une formation de 6mois 
+        en tant que developpeur web/Web mobile et un master en biotechnologie"><i class="icon fa-solid fa-graduation-cap"></i>
+            <a class = "text">Parcours académique</a>
         </div>
 
         
@@ -114,9 +121,6 @@
 </div>
 <div class="globe-b"></div>
   </div>
-
-  
-
     <script src="./js/index.js"></script>
     
 </body>

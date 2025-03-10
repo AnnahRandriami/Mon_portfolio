@@ -14,6 +14,13 @@
 
 }
 
+.calcul,
+.juste-prix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .my-tools {
     top: 5px;
     right: 30%;
@@ -221,4 +228,30 @@
 
 #gameImage {
     width: 40px;
+}
+
+.date-time-display {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+#weather-info {
+    display: flex;
+    gap: 15px;
+    /* Espacement entre les éléments */
+    align-items: center;
+    /* Alignement vertical */
+    justify-content: center;
+    /* Centrage horizontal */
+    flex-wrap: wrap;
+    /* Permet le retour à la ligne si l'écran est trop petit */
+}
+
+#weather-info p {
+    margin: 0;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-weight: bold;
 }
