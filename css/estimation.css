@@ -63,3 +63,9 @@ button:hover {
 .close-btn:hover {
     background-color: #c9302c;
 }
+
+.definition {
+    color: gray;
+    font-size: small;
+    font-style: italic;
+}
