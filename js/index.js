@@ -103,39 +103,6 @@ navButtonsLeft.forEach((button) => {
   });
 });
 
-//Gestion du loader
-document.addEventListener("DOMContentLoaded", function () {
-  let loader = document.querySelector(".loader");
-  let animationElement = document.querySelector(".animation");
-  let myTools = document.querySelector(".my-tools");
-  let buttons = document.querySelectorAll(".nav");
-  let head = document.querySelector(".head");
-  let globeA = document.querySelector(".globe-a");
-  let globeB = document.querySelector(".globe-b");
-
-  setTimeout(() => {
-    loader.classList.add("hidden");
-    animationElement.style.visibility = "visible";
-    animationElement.style.opacity = 1;
-
-    setTimeout(() => {
-      myTools.classList.add("show");
-    }, 500);
-
-    setTimeout(() => {
-      head.classList.add("show");
-      globeA.classList.add("show");
-      globeB.classList.add("show");
-    }, 2000);
-
-    buttons.forEach((btn, index) => {
-      setTimeout(() => {
-        btn.classList.add(`show-btn-${index + 1}`);
-      }, index * 200);
-    });
-  }, 2000);
-});
-
 //Modal left
 document.addEventListener("DOMContentLoaded", function () {
   const modalLeft = document.querySelector(".content-modal-left");
@@ -245,6 +212,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         const weather = data.data[0];
         updateWeatherUI(weather.city_name, weather.temp, weather.wind_spd);
+        //test console
+        console.log("Données récupérées de l'API : ", data);
       })
       .catch((error) => {
         console.error(
@@ -262,17 +231,14 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       (error) => {
         console.error("Erreur de géolocalisation:", error);
-        // Par défaut : météo de Marseille si refusé
         fetchWeather(43.2965, 5.3698);
       }
     );
   } else {
-    // Si la géolocalisation est désactivée, afficher la météo de Marseille
     fetchWeather(43.2965, 5.3698);
   }
 });
 
-//gestion du loader
 document.addEventListener("DOMContentLoaded", function () {
   const loader = document.querySelector(".loader");
   const animationElement = document.querySelector(".animation");
@@ -282,20 +248,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const globeA = document.querySelector(".globe-a");
   const globeB = document.querySelector(".globe-b");
 
-  const today = new Date().toLocaleDateString(); // Format de la date locale (ex: 10/03/2025)
+  const today = new Date().toLocaleDateString();
 
   // Vérifier si l'utilisateur a déjà vu le loader aujourd'hui
   const lastVisit = localStorage.getItem("lastVisitDate");
 
   if (lastVisit === today) {
-    // Si l'utilisateur est déjà venu aujourd'hui, on désactive le loader et on affiche directement l'animation
+    // Si l'utilisateur a déjà visité aujourd'hui, on affiche le contenu directement
     loader.classList.add("hidden");
     animationElement.style.visibility = "visible";
     animationElement.style.opacity = 1;
 
     setTimeout(() => {
       myTools.classList.add("show");
-    }, 500);
+    }, 1000);
 
     setTimeout(() => {
       head.classList.add("show");
@@ -309,28 +275,31 @@ document.addEventListener("DOMContentLoaded", function () {
       }, index * 200);
     });
   } else {
-    // Si c'est la première visite ou que c'est un jour différent, on affiche le loader normalement
+    // Si c'est la première visite ou un jour différent, on affiche le loader normalement
+    loader.classList.add("show");
+    animationElement.style.visibility = "visible";
+    animationElement.style.opacity = 1;
+
     setTimeout(() => {
       loader.classList.add("hidden");
-      animationElement.style.visibility = "visible";
-      animationElement.style.opacity = 1;
+    }, 3000);
 
-      setTimeout(() => {
-        myTools.classList.add("show");
-      }, 500);
+    setTimeout(() => {
+      myTools.classList.add("show");
+    }, 1000);
 
-      setTimeout(() => {
-        head.classList.add("show");
-        globeA.classList.add("show");
-        globeB.classList.add("show");
-      }, 2000);
-
-      buttons.forEach((btn, index) => {
-        setTimeout(() => {
-          btn.classList.add(`show-btn-${index + 1}`);
-        }, index * 200);
-      });
+    setTimeout(() => {
+      head.classList.add("show");
+      globeA.classList.add("show");
+      globeB.classList.add("show");
     }, 2000);
+
+    // Affichage progressif des boutons
+    buttons.forEach((btn, index) => {
+      setTimeout(() => {
+        btn.classList.add(`show-btn-${index + 1}`);
+      }, index * 200);
+    });
 
     // Enregistrer la date de la première visite
     localStorage.setItem("lastVisitDate", today);
