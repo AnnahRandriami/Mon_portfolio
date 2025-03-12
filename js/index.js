@@ -190,55 +190,6 @@ function displayDate() {
 }
 displayDate();
 
-//Animation meteo
-document.addEventListener("DOMContentLoaded", function () {
-  const apiKey = "cfd6068f95494a30b0c7af04fbfc7e16"; // Ta clé API Weatherbit
-  const weatherInfo = document.getElementById("weather-info");
-  const weatherAnimation = document.getElementById("weather-animation");
-
-  function updateWeatherUI(cityName, temperature, windSpeed) {
-    document.getElementById("city-name").textContent = `📍 ${cityName}`;
-    document.getElementById("temperature").textContent = `🌡️ ${temperature}°C`;
-    document.getElementById("wind-speed").textContent = `💨 ${windSpeed} km/h`;
-    // Effacer les classes précédentes
-    weatherAnimation.className = "";
-  }
-
-  function fetchWeather(lat, lon) {
-    const url = `https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lon}&key=${apiKey}&lang=fr&units=M`;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        const weather = data.data[0];
-        updateWeatherUI(weather.city_name, weather.temp, weather.wind_spd);
-        //test console
-        console.log("Données récupérées de l'API : ", data);
-      })
-      .catch((error) => {
-        console.error(
-          "Erreur lors de la récupération des données météo:",
-          error
-        );
-      });
-  }
-
-  // Demande la géolocalisation
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        fetchWeather(position.coords.latitude, position.coords.longitude);
-      },
-      (error) => {
-        console.error("Erreur de géolocalisation:", error);
-        fetchWeather(43.2965, 5.3698);
-      }
-    );
-  } else {
-    fetchWeather(43.2965, 5.3698);
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   const loader = document.querySelector(".loader");
   const animationElement = document.querySelector(".animation");
@@ -247,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const head = document.querySelector(".head");
   const globeA = document.querySelector(".globe-a");
   const globeB = document.querySelector(".globe-b");
+  const myName = document.querySelector(".my-name");
 
   const today = new Date().toLocaleDateString();
 
@@ -261,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
       myTools.classList.add("show");
+      myName.classList.add("show");
     }, 1000);
 
     setTimeout(() => {
@@ -285,6 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
 
     setTimeout(() => {
+      myName.classList.add("show");
       myTools.classList.add("show");
     }, 1000);
 

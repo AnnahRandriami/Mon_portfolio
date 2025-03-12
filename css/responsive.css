@@ -1,0 +1,16 @@
+/* Pour les écrans de moins de 768px (tablettes et petits ordinateurs) */
+@media (max-width: 768px) {
+
+
+    .animation {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+/* Pour les écrans de moins de 480px (mobiles) */
+@media (max-width: 480px) {
+    body {
+        overflow-x: visible;
+    }
+}
