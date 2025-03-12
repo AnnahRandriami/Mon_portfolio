@@ -5,7 +5,7 @@ export const modalContent = `
   <div id="timeDisplay"></div>
 </div>
 <div id="instruction">
-  <p style="text-align:center;"><strong>Utiliser les flèches du clavier :</strong></p>
+  <p style="text-align:center;"><strong>Utiliser les <br>flèches du clavier :</strong></p>
   <p>⬅️: Déplacer à gauche</p>
   <p>➡️: Déplacer à droite</p>
   <p>⬆️: Tourner la pièce</p>

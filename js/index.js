@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
       loader.classList.add("hidden");
-    }, 3000);
+    }, 2000);
 
     setTimeout(() => {
       myTools.classList.add("show");
