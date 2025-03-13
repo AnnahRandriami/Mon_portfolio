@@ -1,0 +1,26 @@
+{
+  "name": "monportfolio",
+  "version": "1.0.0",
+  "description": "Mon portfolio met en avant :",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnahRandriami/Mon_portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnnahRandriami/Mon_portfolio/issues"
+  },
+  "homepage": "https://github.com/AnnahRandriami/Mon_portfolio#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0"
+  }
+}
