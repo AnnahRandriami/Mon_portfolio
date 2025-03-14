@@ -118,7 +118,6 @@
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     color: black;
-    background-image: url('/image/pixel-art-7512999_1280.png');
     background-size: cover;
     visibility: hidden;
     z-index: 5;
@@ -362,7 +361,7 @@ body {
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     color: black;
-    background-image: url('/image/pixel-art-7512999_1280.png');
+    background-color: aliceblue;
     background-size: cover;
     visibility: hidden;
     z-index: 5;
@@ -553,4 +552,9 @@ body {
         padding: 8px;
         font-size: 16px;
     }
+}
+
+li {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
 }

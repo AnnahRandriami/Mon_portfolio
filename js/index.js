@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Gestion de l'ouverture de la modale et recupération du html pour chaque boutton
+  // Gestion de l'ouverture de la modale et récupération du HTML pour chaque bouton
   document.querySelectorAll(".open-modal").forEach((icon) => {
     icon.addEventListener("click", function () {
       const parentDiv = this.closest("[data-js]");
@@ -143,6 +143,20 @@ document.addEventListener("DOMContentLoaded", function () {
               updateTimerDisplay();
               checkGameOver();
             }, 1000);
+
+            // Si data-js est tetris.js, changer l'image de fond
+            const modalElement = document.querySelector(".content-modal-left"); // Cibler la modale, ajustez la classe si nécessaire
+            if (modalElement) {
+              if (dataFile === "tetris.js") {
+                modalElement.style.backgroundImage =
+                  "url('./image/pixel-art-7512999_1280.png')";
+                modalElement.style.backgroundSize = "cover";
+                modalElement.style.backgroundPosition = "center";
+              } else {
+                // Si ce n'est pas tetris.js, ne rien mettre en fond
+                modalElement.style.backgroundImage = "none";
+              }
+            }
 
             if (module.startGame) {
               module.startGame();
