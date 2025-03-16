@@ -6,7 +6,7 @@ body {
 
 .animation {
     height: 100vh;
-    background-image: url('/image/landscape-7283516_1280.jpg');
+    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/landscape-7283516_1280.jpg');
     background-size: cover;
     display: flex;
     align-items: center;
