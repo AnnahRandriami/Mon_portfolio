@@ -6,4 +6,4 @@ J’ai adopté une approche innovante et engageante pour valoriser mon profil et
 
 Vous trouverez également sur mon GitHub d'autres projets sur lesquels j'ai travaillé, ainsi que mes travaux en cours.
 
-Voici le lien pour y acceder directement : https://annahrandriami.github.io/Mon_portfolio/index.html
+Voici le lien pour y acceder directement : https://annahrandriami.github.io/Mon_portfolio/index.html.
