@@ -252,6 +252,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
       myName.classList.add("show");
+    }, 1000);
+
+    setTimeout(() => {
       myTools.classList.add("show");
     }, 1000);
 

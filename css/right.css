@@ -99,8 +99,10 @@
     clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 100% 100%, 71% 89%, 29% 89%, 0 100%, 0% 43%, 17% 12%);
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
+    display: block;
 
 }
+
 
 .line {
     margin-top: 95px;
