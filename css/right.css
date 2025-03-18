@@ -175,6 +175,11 @@
     transition: all 0.3s ease;
 }
 
+.nav.show {
+    opacity: 1;
+    visibility: visible;
+}
+
 .nav:hover {
     box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
     opacity: 75%;
@@ -189,6 +194,10 @@
     left: 50%;
     text-align: center;
     transform: translate(-50%, -50%);
+}
+
+.text.show {
+    opacity: 1;
 }
 
 /* Apparence de l'icône de navigation */

@@ -57,30 +57,33 @@ document.onmousemove = function () {
   }, delay);
 };
 
-// Parcourir tous les boutons partie droite
+// Sélectionner tous les boutons de navigation
 navButtons.forEach((button) => {
   button.addEventListener("mouseenter", () => {
     const icon = button.querySelector(".icon");
     const text = button.querySelector(".text");
 
-    if (icon) {
-      icon.style.visibility = "hidden";
+    if (icon && text) {
+      icon.style.opacity = "0"; // Opacité pour une transition fluide
+      text.style.opacity = "1";
       text.style.visibility = "visible";
     }
   });
 
   button.addEventListener("mouseleave", () => {
     const icon = button.querySelector(".icon");
-    if (icon) {
-      icon.style.visibility = "visible";
+    const text = button.querySelector(".text");
+
+    if (icon && text) {
+      icon.style.opacity = "1";
+      text.style.opacity = "0";
+      text.style.visibility = "hidden";
     }
   });
-});
-navButtons.forEach((button) => {
+
   button.addEventListener("click", () => {
-    const icon = button.querySelector(".icon");
     const animation = document.querySelector(".animation");
-    if (icon) {
+    if (animation) {
       animation.classList.toggle("mooveContent");
     }
   });
@@ -225,10 +228,9 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function showElementsWithDelay(elements, delayBase = 1000, interval = 200) {
     elements.forEach((element, index) => {
-      setTimeout(
-        () => element.classList.add("show"),
-        delayBase + index * interval
-      );
+      setTimeout(() => {
+        element.classList.add("show"); // Ajoute la classe "show" pour garder l'élément visible
+      }, delayBase + index * interval);
     });
   }
 
@@ -242,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
 
     showElementsWithDelay([head, globeA, globeB], 2000);
-    showElementsWithDelay(buttons, 2000, 200);
+    showElementsWithDelay(buttons, 2000, 200); // Correction ici : les boutons apparaissent et restent
   }
 
   if (lastVisit === today) {
