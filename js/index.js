@@ -6,6 +6,7 @@ const navButtons = document.querySelectorAll(".nav");
 const navButtonsLeft = document.querySelectorAll(".right");
 const addContentLeft = document.querySelector(".content-modal-right");
 const myName = document.querySelector(".name");
+const fonts = document.querySelector(".font");
 let mouseMoveTimeout;
 const delay = 1000;
 
@@ -113,6 +114,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeModal = document.querySelector(".close-modal");
   let timer;
   let seconds = 0;
+
+  //changement de couleur de font
+
+  // Sélectionne tous les éléments avec la classe .open-modal
+  const openModals = document.querySelectorAll(".open-modal");
+
+  // Appliquer un écouteur d'événements sur chaque élément
+  openModals.forEach((modal) => {
+    modal.addEventListener("mouseenter", () => {
+      // Change la couleur de l'icône en blanc
+      const icon = modal.querySelector(".font"); // ou modal.querySelector("i"), selon ton HTML
+      if (icon) {
+        icon.style.color = "white";
+        icon.style.fontSize = "2em";
+      }
+    });
+
+    modal.addEventListener("mouseleave", () => {
+      // Remet la couleur de l'icône à sa couleur d'origine (par exemple noir)
+      const icon = modal.querySelector(".font"); // ou modal.querySelector("i"), selon ton HTML
+      if (icon) {
+        icon.style.color = "";
+        icon.style.fontSize = "";
+      }
+    });
+  });
 
   // Affichage du timer en  les secondes dans l'élément de la modale
   function updateTimerDisplay() {

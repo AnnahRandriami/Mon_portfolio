@@ -79,15 +79,17 @@
     cursor: pointer;
 }
 
+.open-modal:hover {
+    background-color: rgba(107, 32, 118, 0.47);
+}
+
 .font {
     margin-top: 10px;
     font-size: 25px;
     color: #690cb0;
 }
 
-.font:hover {
-    color: white;
-}
+
 
 .tetris {
     top: 40%;
@@ -317,9 +319,7 @@ body {
     color: #690cb0;
 }
 
-.font:hover {
-    color: white;
-}
+
 
 /* Position des boutons */
 .tetris {
