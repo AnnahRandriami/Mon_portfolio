@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const apiKey = "cfd6068f95494a30b0c7af04fbfc7e16"; // Clé API Weatherbit
-  const weatherInfo = document.getElementById("weather-info");
+  const defaultLat = 43.2965; // Latitude de Marseille
+  const defaultLon = 5.3698; // Longitude de Marseille
   const weatherAnimation = document.getElementById("weather-animation");
 
   function getWeatherDescription(code) {
@@ -68,6 +69,12 @@ document.addEventListener("DOMContentLoaded", function () {
           weather.weather.code
         );
         console.log("Données météo récupérées :", data);
+
+        // Stocker la localisation en localStorage avec la date
+        const today = new Date().toISOString().split("T")[0];
+        localStorage.setItem("weather_lat", lat);
+        localStorage.setItem("weather_lon", lon);
+        localStorage.setItem("weather_date", today);
       })
       .catch((error) => {
         console.error(
@@ -77,17 +84,39 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        fetchWeather(position.coords.latitude, position.coords.longitude);
-      },
-      (error) => {
-        console.error("Erreur de géolocalisation:", error);
-        fetchWeather(43.2965, 5.3698); // Marseille par défaut
-      }
+  function getUserLocation() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          fetchWeather(position.coords.latitude, position.coords.longitude);
+        },
+        (error) => {
+          console.warn("Géolocalisation refusée ou erreur:", error);
+          localStorage.setItem("weather_denied", "true"); // Stocker le refus
+          fetchWeather(defaultLat, defaultLon); // Charger Marseille
+        }
+      );
+    } else {
+      fetchWeather(defaultLat, defaultLon); // Si pas de support, charger Marseille
+    }
+  }
+
+  // Vérifier si l'utilisateur a refusé la géolocalisation
+  const weatherDenied = localStorage.getItem("weather_denied");
+  const savedLat = localStorage.getItem("weather_lat");
+  const savedLon = localStorage.getItem("weather_lon");
+  const savedDate = localStorage.getItem("weather_date");
+  const today = new Date().toISOString().split("T")[0];
+
+  if (weatherDenied === "true") {
+    console.log(
+      "L'utilisateur a refusé la géolocalisation. Utilisation de Marseille."
     );
+    fetchWeather(defaultLat, defaultLon);
+  } else if (savedLat && savedLon && savedDate === today) {
+    console.log("Utilisation de la localisation enregistrée.");
+    fetchWeather(savedLat, savedLon);
   } else {
-    fetchWeather(43.2965, 5.3698);
+    getUserLocation();
   }
 });

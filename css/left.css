@@ -11,8 +11,8 @@
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 1;
-}
 
+}
 
 .calcul,
 .juste-prix {
@@ -160,15 +160,6 @@
     font-size: 18px;
 }
 
-.search-button:hover,
-.tetris:hover,
-.calcul:hover,
-.juste-prix:hover,
-.pictures:hover {
-    background-color: #2d078d;
-    color: white;
-}
-
 .content-modal-left.show {
     visibility: visible;
     opacity: 1;
@@ -252,8 +243,27 @@
     font-size: small;
 }
 
+/* Réinitialisation des marges et du padding */
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
 
-
+/* Outils et boutons */
+.my-tools,
+.tetris,
+.search,
+.pictures,
+.calcul,
+.juste-prix {
+    text-align: center;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
 
 /* Animation d'apparition */
 @keyframes pop-in {
@@ -386,14 +396,7 @@
     font-size: 18px;
 }
 
-.search-button:hover,
-.tetris:hover,
-.calcul:hover,
-.juste-prix:hover,
-.pictures:hover {
-    background-color: #2d078d;
-    color: white;
-}
+
 
 /* Contenu modal visible */
 .content-modal-left.show {
@@ -460,23 +463,82 @@
     font-size: small;
 }
 
+/* Responsive Design - Media Queries */
+
+/* Tablettes et appareils de taille moyenne */
+@media (max-width: 768px) {
+
+    .tetris,
+    .calcul,
+    .juste-prix,
+    .pictures {
+        width: 100px;
+        /* Réduire la taille des boutons */
+        height: 80px;
+    }
+
+    .font {
+        font-size: 20px;
+        /* Réduire la taille de la police */
+    }
+
+    /* Ajuster la taille des outils */
+    .my-tools {
+        width: 80%;
+        /* Utiliser une largeur en pourcentage pour les petits écrans */
+        top: 10%;
+        right: 10%;
+    }
+
+    #tetris {
+        width: 180px;
+        height: 360px;
+    }
+}
+
+/* Smartphones et petits appareils */
+@media (max-width: 480px) {
+
+    .tetris,
+    .calcul,
+    .juste-prix,
+    .pictures {
+        width: 80px;
+        height: 60px;
+        /* Taille encore plus petite pour les petits écrans */
+    }
+
+    .font {
+        font-size: 18px;
+        /* Réduire encore plus la taille des lettres */
+    }
+
+    .my-tools {
+        width: 90%;
+        /* Les outils prennent presque toute la largeur de l'écran */
+        top: 5%;
+        right: 5%;
+    }
+
+    #tetris {
+        width: 160px;
+        height: 320px;
+    }
+
+    /* Réduire l'espace et la taille des éléments pour les petits écrans */
+    .search-input {
+        width: 80%;
+        /* Réduire la taille du champ de recherche */
+        font-size: 14px;
+    }
+
+    .search-button {
+        padding: 8px;
+        font-size: 16px;
+    }
+}
 
 li {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: medium;
-}
-
-.responsiveText {
-    position: absolute;
-    background-color: #a21fa64f;
-    visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 40%;
-    font-size: small;
-    height: 90px;
-    top: 150px;
-    z-index: 0;
 }

@@ -212,66 +212,50 @@ document.addEventListener("DOMContentLoaded", function () {
   const head = document.querySelector(".head");
   const globeA = document.querySelector(".globe-a");
   const globeB = document.querySelector(".globe-b");
-  const myName = document.querySelector(".my-name");
+  const myName = document.querySelector(".name");
 
   const today = new Date().toLocaleDateString();
-
-  // Vérifier si l'utilisateur a déjà vu le loader aujourd'hui
   const lastVisit = localStorage.getItem("lastVisitDate");
 
+  /**
+   * Afficher les éléments progressivement avec un délai
+   * @param {Array} elements - Liste des éléments à afficher
+   * @param {number} delayBase - Délai initial (ms)
+   * @param {number} interval - Intervalle entre chaque apparition (ms)
+   */
+  function showElementsWithDelay(elements, delayBase = 1000, interval = 200) {
+    elements.forEach((element, index) => {
+      setTimeout(
+        () => element.classList.add("show"),
+        delayBase + index * interval
+      );
+    });
+  }
+
+  function showContent() {
+    animationElement.style.visibility = "visible";
+    animationElement.style.opacity = 1;
+
+    setTimeout(() => {
+      loader.classList.add("hidden"); // Cache le loader après l'affichage initial
+      myTools.classList.add("show");
+    }, 1000);
+
+    showElementsWithDelay([head, globeA, globeB], 2000);
+    showElementsWithDelay(buttons, 2000, 200);
+  }
+
   if (lastVisit === today) {
-    // Si l'utilisateur a déjà visité aujourd'hui, on affiche le contenu directement
+    // Si l'utilisateur a déjà visité aujourd'hui → pas de loader, on affiche directement
     loader.classList.add("hidden");
-    animationElement.style.visibility = "visible";
-    animationElement.style.opacity = 1;
-
-    setTimeout(() => {
-      myTools.classList.add("show");
-    }, 1000);
-
-    setTimeout(() => {
-      head.classList.add("show");
-      globeA.classList.add("show");
-      globeB.classList.add("show");
-    }, 2000);
-
-    buttons.forEach((btn, index) => {
-      setTimeout(() => {
-        btn.classList.add(`show-btn-${index + 1}`);
-      }, index * 200);
-    });
+    showContent();
   } else {
-    // Si c'est la première visite ou un jour différent, on affiche le loader normalement
+    // Première visite → affichage du loader puis du contenu
     loader.classList.add("show");
-    animationElement.style.visibility = "visible";
-    animationElement.style.opacity = 1;
 
     setTimeout(() => {
-      loader.classList.add("hidden");
-    }, 2000);
-
-    setTimeout(() => {
-      myName.classList.add("show");
-    }, 1000);
-
-    setTimeout(() => {
-      myTools.classList.add("show");
-    }, 1000);
-
-    setTimeout(() => {
-      head.classList.add("show");
-      globeA.classList.add("show");
-      globeB.classList.add("show");
-    }, 2000);
-
-    // Affichage progressif des boutons
-    buttons.forEach((btn, index) => {
-      setTimeout(() => {
-        btn.classList.add(`show-btn-${index + 1}`);
-      }, index * 200);
-    });
-
-    // Enregistrer la date de la première visite
-    localStorage.setItem("lastVisitDate", today);
+      showContent();
+      localStorage.setItem("lastVisitDate", today);
+    }, 2000); // On cache le loader après 2 secondes
   }
 });

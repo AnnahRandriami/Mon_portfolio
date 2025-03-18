@@ -1,3 +1,44 @@
+/* 🌟 Animation pour l'apparition progressive des boutons */
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+        /* Décalé vers la droite */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 🌟 Animation pour la flottabilité */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* 🌟 Animation pour le zoom de la tête */
+@keyframes head-zoom {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Conteneur principal pour les boutons */
 .allButton {
     display: flex;
     align-items: center;
@@ -5,13 +46,12 @@
     width: 400px;
     height: 400px;
     border-radius: 50%;
-    z-index: 5;
     position: absolute;
     margin-left: 2%;
     z-index: 1;
 }
 
-
+/* Apparence de l'élément "head" */
 .head {
     display: flex;
     align-items: flex-start;
@@ -20,8 +60,6 @@
     background: radial-gradient(circle, rgba(181, 107, 57, 1) 55%, rgba(168, 110, 49, 1) 73%);
     border: solid 1px black;
     box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -32,12 +70,11 @@
     transform: scale(1.5);
 }
 
-
 .head.show {
     opacity: 1;
 }
 
-
+/* Globe "a" */
 .globe-a {
     background-color: black;
     width: 30px;
@@ -49,6 +86,7 @@
     opacity: 0;
 }
 
+/* Globe "b" */
 .globe-b {
     background-color: black;
     width: 30px;
@@ -66,30 +104,7 @@
     opacity: 1;
 }
 
-@keyframes head-zoom {
-    0% {
-        transform: scale(1.5);
-        opacity: 0;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
+/* Apparence de la "glass" (verre) */
 .glass {
     position: relative;
     margin-top: 30px;
@@ -100,10 +115,9 @@
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     display: block;
-
 }
 
-
+/* Apparence de l'élément "line" */
 .line {
     margin-top: 95px;
     visibility: hidden;
@@ -111,6 +125,7 @@
     height: 8px;
 }
 
+/* Apparence de l'œil */
 .eye {
     background-color: black;
     width: 10px;
@@ -122,9 +137,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
+/* Apparence de la balle dans l'œil */
 .ball {
     background-color: white;
     width: 5px;
@@ -135,6 +150,7 @@
     bottom: 5px;
 }
 
+/* Apparence de la bouche */
 .mounth {
     position: absolute;
     width: 20px;
@@ -144,7 +160,7 @@
     border: solid 1px black;
 }
 
-
+/* Apparence du bouton de navigation */
 .nav {
     height: 50px;
     width: 50px;
@@ -161,12 +177,11 @@
 
 .nav:hover {
     box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
     opacity: 75%;
     z-index: 1;
 }
 
+/* Apparence du texte de navigation */
 .text {
     position: absolute;
     opacity: 0;
@@ -174,14 +189,9 @@
     left: 50%;
     text-align: center;
     transform: translate(-50%, -50%);
-
 }
 
-.nav:hover .text {
-    visibility: visible;
-    opacity: 1;
-}
-
+/* Apparence de l'icône de navigation */
 i {
     position: absolute;
     border-radius: 50%;
@@ -189,9 +199,9 @@ i {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #690cb0;
-
 }
 
+/* Apparence des liens */
 a {
     text-decoration: none;
     color: black;
@@ -199,6 +209,7 @@ a {
     font-size: 80%;
 }
 
+/* Apparence des boutons spécifiques */
 .btn-1 {
     top: 90%;
     left: 160%;
@@ -224,29 +235,7 @@ a {
     left: 100%;
 }
 
-
 /* 🌟 Animation pour l'apparition progressive des boutons */
-@keyframes slide-in {
-    0% {
-        opacity: 0;
-        transform: translateX(50px);
-        /* Décalé vers la droite */
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Caché au départ */
-.nav {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* Classes pour faire apparaître les boutons un par un */
 .show-btn-1 {
     animation: slide-in 0.8s ease-out forwards;
 }
@@ -279,11 +268,13 @@ a {
     animation: slide-in 0.8s ease-out 1.4s forwards;
 }
 
+/* Effet de contenu modal */
 .mooveContent {
     opacity: 10%;
     transition: all 0.3s ease;
 }
 
+/* Apparence du modal de droite */
 .content-modal-right,
 .name {
     position: absolute;
@@ -303,24 +294,24 @@ a {
     align-items: center;
     text-align: center;
     flex-direction: column;
-
 }
 
-
+/* Modal de droite spécifique */
 .content-modal-right {
     visibility: hidden;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     color: black;
 }
 
+/* Nom du modal */
 .name {
     top: 25%;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     color: rgb(14, 13, 13);
     transition: opacity 0.3s ease-in-out;
-
 }
 
+/* Titre et sous-titre du modal */
 .name h1 {
     font-size: 1.5em;
     font-weight: bold;
@@ -337,12 +328,14 @@ a {
     padding: 0;
 }
 
+/* Apparence des oreilles */
 .ear {
     width: 200px;
     height: 100px;
     background-color: black;
 }
 
+/* Icônes dans le conteneur */
 .icon-container {
     position: absolute;
     color: white;
