@@ -400,11 +400,11 @@ body {
 }
 
 .search-input:focus {
-    border: 2px solid #a21fa64f;
+    border: 2px solid #f1ecf14f;
 }
 
 .search-button {
-    background-color: #a21fa64f;
+    background-color: #f1ecf14f;
     color: white;
     border: none;
     padding: 10px;
