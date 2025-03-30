@@ -266,12 +266,12 @@ document.addEventListener("DOMContentLoaded", function () {
     animationElement.style.opacity = 1;
 
     setTimeout(() => {
-      loader.classList.add("hidden"); // Cache le loader après l'affichage initial
+      loader.classList.add("hidden"); 
       myTools.classList.add("show");
     }, 1000);
 
     showElementsWithDelay([head, globeA, globeB], 2000);
-    showElementsWithDelay(buttons, 2000, 200); // Correction ici : les boutons apparaissent et restent
+    showElementsWithDelay(buttons, 2000, 200); 
   }
 
   if (lastVisit === today) {
