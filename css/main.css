@@ -6,8 +6,8 @@ body {
 
 .animation {
     height: 100vh;
-    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/digitization-5231610_1280');
-    background-size: cover;
+    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/digitization-5231610_1280.jpg');
+    background-size: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/digitization-5231610_1280');
+    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/digitization-5231610_1280.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -45,7 +45,7 @@ body {
 
 .lettre {
     font-family: Impact, Charcoal, sans-serif;
-    color: rgb(54, 27, 128);
+    color: white;
     font-size: 1em;
     letter-spacing: 15px;
     margin-bottom: 150px;
