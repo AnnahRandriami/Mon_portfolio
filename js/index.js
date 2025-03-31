@@ -65,7 +65,7 @@ navButtons.forEach((button) => {
     const text = button.querySelector(".text");
 
     if (icon && text) {
-      icon.style.opacity = "0"; // Opacité pour une transition fluide
+      icon.style.opacity = "0"; 
       text.style.opacity = "1";
       text.style.visibility = "visible";
     }

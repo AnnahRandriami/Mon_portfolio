@@ -153,7 +153,11 @@ body {
     min-height: 450px;
 }
 
-
+.entete {
+    margin-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+}
 
 
 .content-modal-left.show {
