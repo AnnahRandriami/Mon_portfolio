@@ -164,7 +164,7 @@
 .nav {
     height: 50px;
     width: 50px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.968);
     opacity: 0;
     position: absolute;
     border-radius: 50%;
@@ -177,14 +177,16 @@
 }
 
 .nav.show {
-    opacity: 1;
+    opacity: 2;
     visibility: visible;
+    background-color: rgba(240, 248, 255, 0.304);
 }
 
 .nav:hover {
     box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.927);
     opacity: 80%;
     z-index: 1;
+    background-color: rgba(240, 248, 255, 0);
 }
 
 .text {
