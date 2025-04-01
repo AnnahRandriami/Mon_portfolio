@@ -100,20 +100,35 @@ function showForm() {
 function calculateRatio() {
   let devEffort = parseFloat(document.getElementById("dev_effort").value);
   let testEffort = parseFloat(document.getElementById("test_effort").value);
+  let resultEffort = document.getElementById("current_test_effort_result");
+  let devCurrentEffort = document.getElementById("current_dev_effort");
 
-  if (devEffort && testEffort) {
+  if (devEffort >= 0 && testEffort >= 0) {
+    if (
+      (resultEffort && resultEffort.innerText.trim() !== "") ||
+      devCurrentEffort.value.trim() !== ""
+    ) {
+      resultEffort.innerText = "";
+      devCurrentEffort.value = "";
+    }
     let ratio = (testEffort / devEffort) * 100;
     let resultText = `Le ratio de test / développement pour le dernier projet est de : ${ratio.toFixed(
       2
     )}%`;
 
     document.getElementById("result").innerText = resultText;
-  } else {
+  } else if (devEffort < 0 || testEffort < 0) {
+    if (
+      (resultEffort && resultEffort.innerText.trim() !== "") ||
+      devCurrentEffort.value.trim() !== ""
+    ) {
+      resultEffort.innerText = "";
+      devCurrentEffort.value = "";
+    }
     document.getElementById("result").innerText =
       "Veuillez entrer les valeurs valides pour l'effort de développement et l'effort de test.";
   }
 }
-//mise en page si recalcule de ration
 
 // Estimation de l'effort de test pour le projet actuel
 function calculateTestEffortForCurrentProject() {
@@ -123,9 +138,8 @@ function calculateTestEffortForCurrentProject() {
   let ratio = parseFloat(
     document.getElementById("result").innerText.split(": ")[1].split("%")[0]
   );
-  if (currentDevEffort && ratio) {
+  if (currentDevEffort >= 0 && ratio >= 0) {
     let testEffortForCurrentProject = (currentDevEffort * ratio) / 100;
-    // Arrondir à deux décimales
     testEffortForCurrentProject = testEffortForCurrentProject.toFixed(2);
 
     document.getElementById("current_test_effort_result").innerText =
@@ -134,7 +148,7 @@ function calculateTestEffortForCurrentProject() {
       " personnes-jours";
   } else {
     document.getElementById("current_test_effort_result").innerText =
-      "Veuillez entrer un effort de développement pour le projet actuel et calculer d'abord le ratio.";
+      "Veuillez entrer un effort de développement pour le projet actuel valide";
   }
 }
 
