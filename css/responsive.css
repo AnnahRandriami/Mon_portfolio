@@ -1,10 +1,19 @@
 /* Pour les écrans de moins de 768px (tablettes et petits ordinateurs) */
-@media (max-width: 750px) {
+@media (max-width: 1040px),
+(max-height: 429px) {
     body {
-        background-size: contain;
         transform: none !important;
         translate: none !important;
         animation: none !important;
+
+    }
+
+    .animation {
+        background: url('/image/emoji.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
 
     .my-tools,
@@ -16,78 +25,31 @@
     #btn-4,
     #btn-2,
     #btn-3,
+    .head,
+    .mounth,
+    .globe-a,
+    .globe-b,
     .content-modal-right,
     .name {
         display: none
     }
 
 
-    .mounth {
-        width: 40px;
-    }
 
-    .head {
-        animation: none !important;
-    }
-
-    .head {
-        transform: scale(1);
-    }
 
     .globe-a,
     .globe-b {
         animation: none !important;
         transform: none !important;
         translate: none !important;
+        scale: 0.7;
 
     }
-}
 
-
-
-
-/* Pour les écrans de moins de 480px (mobiles) */
-@media (max-width: 480px) {
-
-    body {
-        background-size: contain;
-        transform: none !important;
-        translate: none !important;
-        animation: none !important;
-    }
-
-    .my-tools,
-    .nav,
-
-
-    #btn-5,
-    #btn-1,
-    #btn-4,
-    #btn-2,
-    #btn-3,
-    .content-modal-right,
-    .name {
-        display: none
-    }
-
-
-    .mounth {
-        width: 40px;
-    }
-
-    .head {
-        animation: none !important;
-    }
-
-    .head {
-        transform: scale(0.5);
-    }
-
-    .globe-a,
-    .globe-b {
-        animation: none !important;
-        transform: none !important;
-        translate: none !important;
-
+    .loader {
+        z-index: 0;
+        background: none;
+        opacity: 0;
+        animation: none;
     }
 }

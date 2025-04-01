@@ -56,10 +56,9 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background: rgba(226, 219, 10, 0.701);
-    background: radial-gradient(circle, rgb(233, 240, 10) 55%, rgba(236, 224, 6, 0.991) 73%);
-    border: solid 1px black;
-    box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
+    background: radial-gradient(circle, rgb(230, 184, 40) 55%, rgba(255, 204, 51, 0.991) 73%);
+    border: solid 3px rgba(40, 40, 40, 0.959);
+    box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.842);
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -76,9 +75,11 @@
 
 /* Globe "a" */
 .globe-a {
-    background-color: black;
-    width: 30px;
-    height: 50px;
+    background-color: rgb(40, 40, 40);
+    box-shadow: 0dvi;
+    border: rgb(204, 213, 230) solid 1px;
+    width: 20px;
+    height: 60px;
     clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
     animation: float 3s ease-in-out infinite;
     border-top-left-radius: 50px;
@@ -88,9 +89,11 @@
 
 /* Globe "b" */
 .globe-b {
-    background-color: black;
-    width: 30px;
-    height: 50px;
+    background-color: rgb(40, 40, 40);
+    box-shadow: 0dvi;
+    border: rgb(204, 213, 230) solid 1px;
+    width: 20px;
+    height: 60px;
     clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
     animation: float 3s ease-in-out infinite;
     border-top-right-radius: 50px;
@@ -153,7 +156,7 @@
 /* Apparence de la bouche */
 .mounth {
     position: absolute;
-    width: 20px;
+    width: 30px;
     top: 60px;
     margin: 50px;
     background-color: red;
