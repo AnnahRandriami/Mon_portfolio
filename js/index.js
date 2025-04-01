@@ -6,10 +6,8 @@ const navButtons = document.querySelectorAll(".nav");
 const navButtonsLeft = document.querySelectorAll(".right");
 const addContentLeft = document.querySelector(".content-modal-right");
 const myName = document.querySelector(".name");
-const fonts = document.querySelector(".font");
 let mouseMoveTimeout;
 const delay = 1000;
-
 //Animation tete flottante
 document.onmousemove = function () {
   let x = (event.clientX * 100) / window.innerWidth + "%";
@@ -65,7 +63,7 @@ navButtons.forEach((button) => {
     const text = button.querySelector(".text");
 
     if (icon && text) {
-      icon.style.opacity = "0"; 
+      icon.style.opacity = "0";
       text.style.opacity = "1";
       text.style.visibility = "visible";
     }
@@ -242,8 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const head = document.querySelector(".head");
   const globeA = document.querySelector(".globe-a");
   const globeB = document.querySelector(".globe-b");
-  const myName = document.querySelector(".name");
-
   const today = new Date().toLocaleDateString();
   const lastVisit = localStorage.getItem("lastVisitDate");
 
@@ -266,12 +262,12 @@ document.addEventListener("DOMContentLoaded", function () {
     animationElement.style.opacity = 1;
 
     setTimeout(() => {
-      loader.classList.add("hidden"); 
+      loader.classList.add("hidden");
       myTools.classList.add("show");
     }, 1000);
 
     showElementsWithDelay([head, globeA, globeB], 2000);
-    showElementsWithDelay(buttons, 2000, 200); 
+    showElementsWithDelay(buttons, 2000, 200);
   }
 
   if (lastVisit === today) {
