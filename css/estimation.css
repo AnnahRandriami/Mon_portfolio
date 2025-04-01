@@ -71,3 +71,9 @@ button:hover {
     font-size: small;
     font-style: italic;
 }
+
+.entete {
+    margin-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+}

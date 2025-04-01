@@ -96,7 +96,7 @@ function showForm() {
 
   formContainer.innerHTML = formHTML;
 }
-//calcul du ration
+//calcul du ratio
 function calculateRatio() {
   let devEffort = parseFloat(document.getElementById("dev_effort").value);
   let testEffort = parseFloat(document.getElementById("test_effort").value);
@@ -113,6 +113,7 @@ function calculateRatio() {
       "Veuillez entrer les valeurs valides pour l'effort de développement et l'effort de test.";
   }
 }
+//mise en page si recalcule de ration
 
 // Estimation de l'effort de test pour le projet actuel
 function calculateTestEffortForCurrentProject() {
