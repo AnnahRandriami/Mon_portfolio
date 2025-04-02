@@ -4,6 +4,15 @@ body {
     overflow-x: hidden;
 }
 
+li {
+    cursor: pointer;
+}
+
+li:hover {
+    color: #0d3cca;
+    text-decoration: underline;
+}
+
 .my-tools,
 .tetris,
 .pictures,

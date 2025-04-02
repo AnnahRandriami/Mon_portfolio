@@ -6,6 +6,8 @@ const navButtons = document.querySelectorAll(".nav");
 const navButtonsLeft = document.querySelectorAll(".right");
 const addContentLeft = document.querySelector(".content-modal-right");
 const myName = document.querySelector(".name");
+const head = document.querySelector(".head");
+
 let mouseMoveTimeout;
 const delay = 1000;
 //Animation tete flottante
@@ -89,18 +91,21 @@ navButtons.forEach((button) => {
 });
 
 //Recupération, affichage et gestion du texte pour chaque bouton droit
-navButtonsLeft.forEach((button) => {
-  button.addEventListener("mouseenter", () => {
+const elements = [...navButtonsLeft, document.querySelector(".head")];
+elements.forEach((element) => {
+  element.addEventListener("mouseenter", () => {
     if (navButtonsLeft) {
+      head.style.scale = "1.22";
       addContentLeft.style.visibility = "visible";
       myName.style.visibility = "hidden";
-      addContentLeft.textContent = button.getAttribute("data-text");
+      addContentLeft.textContent = element.getAttribute("data-text");
     }
   });
-  button.addEventListener("mouseleave", () => {
+  element.addEventListener("mouseleave", () => {
     if (addContentLeft) {
       addContentLeft.style.visibility = "hidden";
       myName.style.visibility = "";
+      head.style.scale = "";
     }
   });
 });
@@ -283,4 +288,16 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("lastVisitDate", today);
     }, 2000); // On cache le loader après 2 secondes
   }
+});
+
+//popup
+document.querySelectorAll(".clickable").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault(); // Empêche l'ouverture classique du lien
+    const url = link.getAttribute("data-url");
+    if (url) {
+      window.open(url, "popupWindow", "width=600,height=400", "z-index=100");
+      console.log(url);
+    }
+  });
 });

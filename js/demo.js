@@ -1,13 +1,37 @@
 export const modalContent = `
-  <h2 class="entete">Test automatisé de mon portfolio </h2>
+  <h2 class="entete">Test automatisé de mon portfolio</h2>
     <ul>
-        <li><a onclick="window.location.href='./pages_html/demo1.html'" >Test statique avec eslint</a></li>
-        <li><a onclick="">Test de fonctionalité du jeu tetris en selenium</a></li>
-        <li><a onclick="window.location.href='./pages_html/demo2.html'">Test de fonctionalité de l'estimation de l'effort de test en selenium</a></li>
+       <li><a class="clickable" data-url="./pages_html/demo2.html">Test statique avec ESLint</a></li>
+       <li><a class="clickable" data-url="./pages_html/tetris_test.html">Test de fonctionnalité du jeu Tetris en Selenium</a></li>
+       <li><a class="clickable" data-url="./pages_html/effort_test.html">Test de fonctionnalité de l'estimation de l'effort de test en Selenium</a></li>
     </ul>
-      <h2 class="entete">Test des fonctionnalité du site shopify </h2>
+  <h2 class="entete">Test des fonctionnalités du site Shopify</h2>
     <ul>
-
-       <li><a onclick="">Test de fonctionalité connexion/inscription sur selenium</a></li>
+       <li><a class="clickable" data-url="./pages_html/shopify_login.html">Test de fonctionnalité connexion/inscription sur Selenium</a></li>
+    </ul>
+      <h2 class="entete">Mes projets</h2>
+    <ul>
+       <li><a class="clickable" data-url="https://github.com/AnnahRandriami">Lien vers mon compte gitHub</a></li>
     </ul>
 `;
+
+//popup
+function openPopup(event) {
+  event.preventDefault();
+  const url = event.target.getAttribute("data-url");
+
+  if (url) {
+    console.log("Ouverture du popup :", url);
+    window.open(url, "popupWindow", "width=900,height=500,left=900,top=100");
+  }
+}
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("clickable")) {
+    openPopup(event);
+  }
+});
+
+const observer = new MutationObserver(() => {
+  console.log("Nouveaux éléments détectés, mise à jour des événements.");
+});
+observer.observe(document.body, { childList: true, subtree: true });

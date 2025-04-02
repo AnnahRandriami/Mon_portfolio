@@ -57,7 +57,7 @@
     align-items: flex-start;
     justify-content: center;
     background: radial-gradient(circle, rgb(230, 184, 40) 55%, rgba(255, 204, 51, 0.991) 73%);
-    border: solid 3px rgba(40, 40, 40, 0.959);
+
     box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.842);
     width: 150px;
     height: 150px;
@@ -66,39 +66,58 @@
     animation: float 3s ease-in-out infinite;
     opacity: 0;
     transition: opacity 1s ease-out, transform 1s ease-out;
+    scale: 1.1;
     transform: scale(1.5);
+    cursor: pointer;
+    z-index: 30;
 }
 
 .head.show {
     opacity: 1;
 }
 
-/* Globe "a" */
-.globe-a {
-    background-color: rgb(40, 40, 40);
-    box-shadow: 0dvi;
+.globe-a,
+.globe-b {
+    background: radial-gradient(circle, rgba(43, 121, 223, 1) 10%, rgba(12, 12, 23, 1) 80%);
     border: rgb(204, 213, 230) solid 1px;
-    width: 20px;
-    height: 60px;
-    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-    animation: float 3s ease-in-out infinite;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    opacity: 0;
+    width: 25px;
+    height: 65px;
+    animation: float 3s ease-in-out infinite, pulse-bg 1.5s ease-in-out infinite alternate;
+    opacity: 0.9;
+    background-size: 150% 150%;
+    background-position: center;
 }
 
-/* Globe "b" */
+/* Effet de pulsation du background */
+@keyframes pulse-bg {
+    0% {
+        background-size: 120%;
+        filter: brightness(1);
+    }
+
+    50% {
+        background-size: 140%;
+        filter: brightness(1.5);
+        background-position: 50% 50%;
+    }
+
+    100% {
+        background-size: 120%;
+        filter: brightness(1);
+    }
+}
+
+
+.globe-a {
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
 .globe-b {
-    background-color: rgb(40, 40, 40);
-    box-shadow: 0dvi;
-    border: rgb(204, 213, 230) solid 1px;
-    width: 20px;
-    height: 60px;
     clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
-    animation: float 3s ease-in-out infinite;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
-    opacity: 0;
 }
 
 .head.show,
