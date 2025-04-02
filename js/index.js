@@ -250,14 +250,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /**
    * Afficher les éléments progressivement avec un délai
-   * @param {Array} elements - Liste des éléments à afficher
-   * @param {number} delayBase - Délai initial (ms)
-   * @param {number} interval - Intervalle entre chaque apparition (ms)
+   * @param {Array} elements -
+   * @param {number} delayBase 
+   * @param {number} interval 
    */
   function showElementsWithDelay(elements, delayBase = 1000, interval = 200) {
     elements.forEach((element, index) => {
       setTimeout(() => {
-        element.classList.add("show"); // Ajoute la classe "show" pour garder l'élément visible
+        element.classList.add("show"); 
       }, delayBase + index * interval);
     });
   }
@@ -290,14 +290,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-//popup
-document.querySelectorAll(".clickable").forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault(); // Empêche l'ouverture classique du lien
-    const url = link.getAttribute("data-url");
-    if (url) {
-      window.open(url, "popupWindow", "width=600,height=400", "z-index=100");
-      console.log(url);
-    }
-  });
-});
+
