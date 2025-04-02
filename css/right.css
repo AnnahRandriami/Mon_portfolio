@@ -83,7 +83,7 @@
     width: 25px;
     height: 65px;
     animation: float 3s ease-in-out infinite, pulse-bg 1.5s ease-in-out infinite alternate;
-    opacity: 0.9;
+    opacity: 0;
     background-size: 150% 150%;
     background-position: center;
 }
