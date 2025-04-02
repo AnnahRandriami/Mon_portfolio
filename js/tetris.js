@@ -11,9 +11,7 @@ export const modalContent = `
   <p>⬆️: Tourner la pièce</p>
   <p>⬇️: Accélérer la descente</p>
 </div>
-<div id="next">
-<p style="text-align:center;"><strong>Prochaine pièce:</strong></p>
-</div>
+
 <canvas id="tetris"></canvas>
 `;
 
