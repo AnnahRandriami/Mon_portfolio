@@ -6,9 +6,10 @@ const navButtons = document.querySelectorAll(".nav");
 const navButtonsLeft = document.querySelectorAll(".right");
 const addContentLeft = document.querySelector(".content-modal-right");
 const myName = document.querySelector(".name");
+const head = document.querySelector(".head");
+
 let mouseMoveTimeout;
 const delay = 1000;
-
 //Animation tete flottante
 document.onmousemove = function () {
   let x = (event.clientX * 100) / window.innerWidth + "%";
@@ -57,48 +58,54 @@ document.onmousemove = function () {
   }, delay);
 };
 
-// Parcourir tous les boutons partie droite
+// Sélectionner tous les boutons de navigation
 navButtons.forEach((button) => {
   button.addEventListener("mouseenter", () => {
     const icon = button.querySelector(".icon");
     const text = button.querySelector(".text");
 
-    if (icon) {
-      icon.style.visibility = "hidden";
+    if (icon && text) {
+      icon.style.opacity = "0";
+      text.style.opacity = "1";
       text.style.visibility = "visible";
     }
   });
 
   button.addEventListener("mouseleave", () => {
     const icon = button.querySelector(".icon");
-    if (icon) {
-      icon.style.visibility = "visible";
+    const text = button.querySelector(".text");
+
+    if (icon && text) {
+      icon.style.opacity = "1";
+      text.style.opacity = "0";
+      text.style.visibility = "hidden";
     }
   });
-});
-navButtons.forEach((button) => {
+
   button.addEventListener("click", () => {
-    const icon = button.querySelector(".icon");
     const animation = document.querySelector(".animation");
-    if (icon) {
+    if (animation) {
       animation.classList.toggle("mooveContent");
     }
   });
 });
 
 //Recupération, affichage et gestion du texte pour chaque bouton droit
-navButtonsLeft.forEach((button) => {
-  button.addEventListener("mouseenter", () => {
+const elements = [...navButtonsLeft, document.querySelector(".head")];
+elements.forEach((element) => {
+  element.addEventListener("mouseenter", () => {
     if (navButtonsLeft) {
+      head.style.scale = "1.22";
       addContentLeft.style.visibility = "visible";
       myName.style.visibility = "hidden";
-      addContentLeft.textContent = button.getAttribute("data-text");
+      addContentLeft.textContent = element.getAttribute("data-text");
     }
   });
-  button.addEventListener("mouseleave", () => {
+  element.addEventListener("mouseleave", () => {
     if (addContentLeft) {
       addContentLeft.style.visibility = "hidden";
       myName.style.visibility = "";
+      head.style.scale = "";
     }
   });
 });
@@ -110,6 +117,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeModal = document.querySelector(".close-modal");
   let timer;
   let seconds = 0;
+
+  //changement de couleur de font
+
+  // Sélectionne tous les éléments avec la classe .open-modal
+  const openModals = document.querySelectorAll(".open-modal");
+
+  // Appliquer un écouteur d'événements sur chaque élément
+  openModals.forEach((modal) => {
+    modal.addEventListener("mouseenter", () => {
+      // Change la couleur de l'icône en blanc
+      const icon = modal.querySelector(".font"); // ou modal.querySelector("i"), selon ton HTML
+      if (icon) {
+        icon.style.color = "white";
+        icon.style.fontSize = "2em";
+      }
+    });
+
+    modal.addEventListener("mouseleave", () => {
+      // Remet la couleur de l'icône à sa couleur d'origine (par exemple noir)
+      const icon = modal.querySelector(".font"); // ou modal.querySelector("i"), selon ton HTML
+      if (icon) {
+        icon.style.color = "";
+        icon.style.fontSize = "";
+      }
+    });
+  });
 
   // Affichage du timer en  les secondes dans l'élément de la modale
   function updateTimerDisplay() {
@@ -212,63 +245,49 @@ document.addEventListener("DOMContentLoaded", function () {
   const head = document.querySelector(".head");
   const globeA = document.querySelector(".globe-a");
   const globeB = document.querySelector(".globe-b");
-  const myName = document.querySelector(".my-name");
-
   const today = new Date().toLocaleDateString();
-
-  // Vérifier si l'utilisateur a déjà vu le loader aujourd'hui
   const lastVisit = localStorage.getItem("lastVisitDate");
 
-  if (lastVisit === today) {
-    // Si l'utilisateur a déjà visité aujourd'hui, on affiche le contenu directement
-    loader.classList.add("hidden");
-    animationElement.style.visibility = "visible";
-    animationElement.style.opacity = 1;
-
-    setTimeout(() => {
-      myTools.classList.add("show");
-    }, 1000);
-
-    setTimeout(() => {
-      head.classList.add("show");
-      globeA.classList.add("show");
-      globeB.classList.add("show");
-    }, 2000);
-
-    buttons.forEach((btn, index) => {
+  /**
+   * Afficher les éléments progressivement avec un délai
+   * @param {Array} elements -
+   * @param {number} delayBase 
+   * @param {number} interval 
+   */
+  function showElementsWithDelay(elements, delayBase = 1000, interval = 200) {
+    elements.forEach((element, index) => {
       setTimeout(() => {
-        btn.classList.add(`show-btn-${index + 1}`);
-      }, index * 200);
+        element.classList.add("show"); 
+      }, delayBase + index * interval);
     });
-  } else {
-    // Si c'est la première visite ou un jour différent, on affiche le loader normalement
-    loader.classList.add("show");
+  }
+
+  function showContent() {
     animationElement.style.visibility = "visible";
     animationElement.style.opacity = 1;
 
     setTimeout(() => {
       loader.classList.add("hidden");
-    }, 2000);
-
-    setTimeout(() => {
-      myName.classList.add("show");
       myTools.classList.add("show");
     }, 1000);
 
+    showElementsWithDelay([head, globeA, globeB], 2000);
+    showElementsWithDelay(buttons, 2000, 200);
+  }
+
+  if (lastVisit === today) {
+    // Si l'utilisateur a déjà visité aujourd'hui → pas de loader, on affiche directement
+    loader.classList.add("hidden");
+    showContent();
+  } else {
+    // Première visite → affichage du loader puis du contenu
+    loader.classList.add("show");
+
     setTimeout(() => {
-      head.classList.add("show");
-      globeA.classList.add("show");
-      globeB.classList.add("show");
-    }, 2000);
-
-    // Affichage progressif des boutons
-    buttons.forEach((btn, index) => {
-      setTimeout(() => {
-        btn.classList.add(`show-btn-${index + 1}`);
-      }, index * 200);
-    });
-
-    // Enregistrer la date de la première visite
-    localStorage.setItem("lastVisitDate", today);
+      showContent();
+      localStorage.setItem("lastVisitDate", today);
+    }, 2000); // On cache le loader après 2 secondes
   }
 });
+
+

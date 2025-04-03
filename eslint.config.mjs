@@ -1,26 +1,28 @@
 export default [
   {
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
+      ecmaVersion: "latest", // Utilise la dernière version d'ECMAScript
+      sourceType: "module", // Permet l'utilisation des modules ES6
       globals: {
         document: "readonly",
         window: "readonly",
         localStorage: "readonly",
         console: "readonly",
-        event: "readonly", // Ajout de 'event'
-        setTimeout: "readonly", // Ajout de 'setTimeout'
-        clearTimeout: "readonly", // Ajout de 'clearTimeout'
-        setInterval: "readonly", // Ajout de 'setInterval'
-        clearInterval: "readonly", // Ajout de 'clearInterval'
+        event: "readonly",
+        setTimeout: "readonly",
+        clearTimeout: "readonly",
+        setInterval: "readonly",
+        clearInterval: "readonly",
+        navigator: "readonly",
+        process: "readonly", // Ajout de 'process'
       },
     },
     rules: {
-      "no-undef": "error",
-      "no-unused-vars": "warn",
-      semi: ["error", "always"],
-      quotes: ["error", "double"],
-      eqeqeq: "warn",
+      "no-undef": "error", // Erreur pour les variables non définies
+      "no-unused-vars": "warn", // Avertissement pour les variables inutilisées
+      semi: ["error", "always"], // Utilise des points-virgules
+      quotes: ["error", "double"], // Utilise des guillemets doubles
+      eqeqeq: "warn", // Avertissement sur l'utilisation de "==" au lieu de "==="
     },
   },
 ];

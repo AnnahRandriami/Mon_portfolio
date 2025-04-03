@@ -1,228 +1,3 @@
-.allButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    z-index: 5;
-    position: absolute;
-    margin-left: 2%;
-    z-index: 1;
-}
-
-
-.head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    background: rgb(181, 107, 57);
-    background: radial-gradient(circle, rgba(181, 107, 57, 1) 55%, rgba(168, 110, 49, 1) 73%);
-    border: solid 1px black;
-    box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.75);
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border-top: solid 10px black;
-    animation: float 3s ease-in-out infinite;
-    opacity: 0;
-    transition: opacity 1s ease-out, transform 1s ease-out;
-    transform: scale(1.5);
-}
-
-
-.head.show {
-    opacity: 1;
-}
-
-
-.globe-a {
-    background-color: black;
-    width: 30px;
-    height: 50px;
-    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-    animation: float 3s ease-in-out infinite;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    opacity: 0;
-}
-
-.globe-b {
-    background-color: black;
-    width: 30px;
-    height: 50px;
-    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
-    animation: float 3s ease-in-out infinite;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    opacity: 0;
-}
-
-.head.show,
-.globe-a.show,
-.globe-b.show {
-    opacity: 1;
-}
-
-@keyframes head-zoom {
-    0% {
-        transform: scale(1.5);
-        opacity: 0;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.glass {
-    position: relative;
-    margin-top: 30px;
-    background-color: white;
-    width: 30px;
-    height: 30px;
-    clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 100% 100%, 71% 89%, 29% 89%, 0 100%, 0% 43%, 17% 12%);
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-
-}
-
-.line {
-    margin-top: 95px;
-    visibility: hidden;
-    width: 30px;
-    height: 8px;
-}
-
-.eye {
-    background-color: black;
-    width: 10px;
-    height: 10px;
-    border: solid 1px black;
-    border-radius: 50px;
-    position: absolute;
-    bottom: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.ball {
-    background-color: white;
-    width: 5px;
-    height: 5px;
-    border: solid 1px black;
-    border-radius: 50px;
-    position: absolute;
-    bottom: 5px;
-}
-
-.mounth {
-    position: absolute;
-    width: 20px;
-    top: 60px;
-    margin: 50px;
-    background-color: red;
-    border: solid 1px black;
-}
-
-
-.nav {
-    height: 50px;
-    width: 50px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    position: absolute;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.nav:hover {
-    box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.75);
-    opacity: 75%;
-    z-index: 1;
-}
-
-.text {
-    position: absolute;
-    opacity: 0;
-    top: 50%;
-    left: 50%;
-    text-align: center;
-    transform: translate(-50%, -50%);
-
-}
-
-.nav:hover .text {
-    visibility: visible;
-    opacity: 1;
-}
-
-i {
-    position: absolute;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #690cb0;
-
-}
-
-a {
-    text-decoration: none;
-    color: black;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 80%;
-}
-
-.btn-1 {
-    top: 90%;
-    left: 160%;
-}
-
-.btn-7 {
-    top: 90%;
-    left: 120%;
-}
-
-.btn-2 {
-    top: -10%;
-    left: 180%;
-}
-
-.btn-4 {
-    top: -10%;
-    left: 140%;
-}
-
-.btn-5 {
-    top: -10%;
-    left: 100%;
-}
-
-
 /* 🌟 Animation pour l'apparition progressive des boutons */
 @keyframes slide-in {
     0% {
@@ -237,14 +12,272 @@ a {
     }
 }
 
-/* Caché au départ */
-.nav {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+/* 🌟 Animation pour la flottabilité */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
-/* Classes pour faire apparaître les boutons un par un */
+/* 🌟 Animation pour le zoom de la tête */
+@keyframes head-zoom {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Conteneur principal pour les boutons */
+.allButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 2%;
+    z-index: 1;
+}
+
+/* Apparence de l'élément "head" */
+.head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: radial-gradient(circle, rgb(230, 184, 40) 55%, rgba(255, 204, 51, 0.991) 73%);
+
+    box-shadow: 18px 17px 61px -1px rgba(0, 0, 0, 0.842);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border-top: solid 10px black;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    scale: 1.1;
+    transform: scale(1.5);
+    cursor: pointer;
+    z-index: 30;
+}
+
+.head.show {
+    opacity: 1;
+}
+
+.globe-a,
+.globe-b {
+    background: radial-gradient(circle, rgba(43, 121, 223, 1) 10%, rgba(12, 12, 23, 1) 80%);
+    border: rgb(204, 213, 230) solid 1px;
+    width: 25px;
+    height: 65px;
+    animation: float 3s ease-in-out infinite, pulse-bg 1.5s ease-in-out infinite alternate;
+    opacity: 0;
+    background-size: 150% 150%;
+    background-position: center;
+}
+
+/* Effet de pulsation du background */
+@keyframes pulse-bg {
+    0% {
+        background-size: 120%;
+        filter: brightness(1);
+    }
+
+    50% {
+        background-size: 140%;
+        filter: brightness(1.5);
+        background-position: 50% 50%;
+    }
+
+    100% {
+        background-size: 120%;
+        filter: brightness(1);
+    }
+}
+
+
+.globe-a {
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.globe-b {
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.head.show,
+.globe-a.show,
+.globe-b.show {
+    opacity: 1;
+}
+
+/* Apparence de la "glass" (verre) */
+.glass {
+    position: relative;
+    margin-top: 30px;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 100% 100%, 71% 89%, 29% 89%, 0 100%, 0% 43%, 17% 12%);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    display: block;
+}
+
+/* Apparence de l'élément "line" */
+.line {
+    margin-top: 95px;
+    visibility: hidden;
+    width: 30px;
+    height: 8px;
+}
+
+/* Apparence de l'œil */
+.eye {
+    background-color: black;
+    width: 10px;
+    height: 10px;
+    border: solid 1px black;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Apparence de la balle dans l'œil */
+.ball {
+    background-color: white;
+    width: 5px;
+    height: 5px;
+    border: solid 1px black;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 5px;
+}
+
+/* Apparence de la bouche */
+.mounth {
+    position: absolute;
+    width: 30px;
+    top: 60px;
+    margin: 50px;
+    background-color: red;
+    border: solid 1px black;
+}
+
+/* Apparence du bouton de navigation */
+.nav {
+    height: 50px;
+    width: 50px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.968);
+    opacity: 0;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.nav.show {
+    opacity: 2;
+    visibility: visible;
+    background-color: rgba(240, 248, 255, 0.304);
+}
+
+.nav:hover {
+    box-shadow: 37px 13px 207px -5px rgba(0, 0, 0, 0.927);
+    opacity: 80%;
+    z-index: 1;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.text {
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    transform: translate(-50%, -50%);
+}
+
+.text.show {
+    opacity: 1;
+}
+
+/* Apparence de l'icône de navigation */
+i {
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+/* Apparence des liens */
+a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 80%;
+
+}
+
+/* Apparence des boutons spécifiques */
+.btn-1 {
+    top: 95%;
+    left: 180%;
+}
+
+.btn-7 {
+    top: 95%;
+    left: 145%;
+}
+
+.btn-8 {
+    top: 95%;
+    left: 110%;
+}
+
+.btn-2 {
+    top: -5%;
+    left: 180%;
+}
+
+.btn-4 {
+    top: -5%;
+    left: 145%;
+}
+
+.btn-5 {
+    top: -5%;
+    left: 110%;
+}
+
+/* 🌟 Animation pour l'apparition progressive des boutons */
 .show-btn-1 {
     animation: slide-in 0.8s ease-out forwards;
 }
@@ -277,11 +310,13 @@ a {
     animation: slide-in 0.8s ease-out 1.4s forwards;
 }
 
+/* Effet de contenu modal */
 .mooveContent {
     opacity: 10%;
     transition: all 0.3s ease;
 }
 
+/* Apparence du modal de droite */
 .content-modal-right,
 .name {
     position: absolute;
@@ -295,30 +330,30 @@ a {
     display: inline-block;
     border-radius: 8px;
     transition: opacity 0.3s ease-in-out;
-    background-color: #a21fa64f;
+    background-color: rgba(252, 243, 243, 0.781);
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
-
 }
 
-
+/* Modal de droite spécifique */
 .content-modal-right {
     visibility: hidden;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     color: black;
 }
 
+/* Nom du modal */
 .name {
     top: 25%;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     color: rgb(14, 13, 13);
     transition: opacity 0.3s ease-in-out;
-
 }
 
+/* Titre et sous-titre du modal */
 .name h1 {
     font-size: 1.5em;
     font-weight: bold;
@@ -335,12 +370,14 @@ a {
     padding: 0;
 }
 
+/* Apparence des oreilles */
 .ear {
     width: 200px;
     height: 100px;
     background-color: black;
 }
 
+/* Icônes dans le conteneur */
 .icon-container {
     position: absolute;
     color: white;

@@ -11,7 +11,9 @@
    <link rel="stylesheet" href="./css/responsive.css">
 </head>
 <body>
+ 
     <div id="weather-animation"></div> 
+   
    <div class="loader">
 
 <span class="lettre">B</span>
@@ -25,7 +27,9 @@
 <span class="lettre">E</span>
 <span class="lettre">!</span>
    </div>
+ 
   <div class="animation">
+    
     <div id="modal-left" class="content-modal-left">
         <span class="close-modal">&times;</span>
        <div id="modal-content"> </div>
@@ -44,24 +48,24 @@
         </div>
         </div>
        
-     <div class="tetris" data-js="tetris.js">
-      <p>Tetris</p>
-      <i id="tetrisButton" class="fa-solid fa-gamepad font open-modal"></i>
+     <div class="tetris open-modal" data-js="tetris.js">
+      <p class="sousTitre">Tetris</p>
+      <i id="tetrisButton"  class="fa-solid fa-gamepad font"></i>
      </div>  
 
-     <div class="calcul" onclick="window.location.href='./pages_html/estimation.html'">
-       <p>Estimation de l'effort de test</p>
+     <div class="calcul open-modal" onclick="window.location.href='./pages_html/estimation.html'">
+        <i class="fa-solid fa-hourglass-half font"></i>
+       <p class="sousTitre">Effort de test</p>
      </div>
   
-     <div class="juste-prix"  data-js="test.js">
-       <p> Approche de test</p>
-       <i id="testButton" class="fa-solid fa-bug font open-modal"></i>
-
+     <div class="juste-prix open-modal"  data-js="test.js">
+       <p class="sousTitre"> Test management</p>
+       <i id="testButton" class="fa-solid fa-rectangle-list font"></i>
      </div>
-     <div class="pictures" data-js="pictures.js">
-       <p>Demonstation</p>
-       <i class="fa-solid fa-video font open-modal"></i>
 
+     <div class="pictures open-modal" data-js="demo.js">
+       <p class="sousTitre">Demonstation</p>
+       <i class="fa-solid fa-video font"></i>
      </div>
        
        
@@ -71,32 +75,26 @@
         <div class="content-modal-right"></div>
         <div class="name">
             <h1>Annah RANDRIAMITANDRINA</h1>
-            <p>
+            <p class="sousTitre">
                <a href="mailto:annah.randriami@gmail.com">annah.randriami@gmail.com</a><br>
                Marseille, France
             </p>
-            <h2 class="certification">Certifié ISTQB 2024</h2>
+            <h2 class="certification">Testeuse logiciel<br>Certifié ISTQB foundation V4.0</h2>
         </div>
     
-        <div id = "btn-1" class="nav btn-1 right" data-text="CV à télécharger">
+        <div id = "btn-1" class="nav btn-1 right" data-text="CV complet à télécharger">
             <i class="icon fa-solid fa-download"></i>
-            <a class = "text" href="/document/CV_Annah_RANDRIAMITANDRINA_Testeur_Logiciel.pdf" target="_blank">CV</a>
+            <a class = "text" href="https://annahrandriami.github.io/Mon_portfolio/document/CV_Annah_RANDRIAMITANDRINA_Testeur_Logiciel.pdf" target="_blank">CV</a>
         </div>
         <div class="nav btn-2 right" 
         data-text="HTML, CSS ,SAAS, Javascript, Python, mysql, SQL,PHP,Angular, Symphony " ><i class="icon fa-solid fa-briefcase"></i>
             <a class = "text">Langages de programation</a>
         </div>
-
-      
-
-        <div class="nav btn-4 right" data-text="Passionnée par l'univers technologique, 
-        j'ai choisi de me reconvertir pour mettre à profit mes compétences 
-        en méthodologie, rigueur et analyse, 
-        et ainsi contribuer au développement et à l'innovation
-         au sein d’une entreprise."><i class="icon fa-solid fa-user"></i>
-            <div class = "text">A propos
-           
-            </div>
+        <div class="nav btn-4 right" data-text="Après une pause dédiée à ma famille, 
+        je suis prête à relever de nouveaux défis. Habituée aux environnements 
+        réglementés, je suis rigoureuse, autonome et déterminée.
+         J’évolue très rapidement et apporte une réelle valeur ajoutée à une équipe de test."><i class="icon fa-solid fa-user"></i>
+         <a class="text">A propos </a>
         </div>
 
         <div id="btn-5" class="nav btn-5 right" 
@@ -105,26 +103,26 @@
        <i class="icon fa-solid fa-star"></i>
        <a class="text">Outils test & collaboration </a>
    </div>
-   
-
-
-        <div class="nav btn-7 right" data-text="Certifié ISTQB foundation 2024, j'ai aussi fait une formation de 6mois 
-        en tant que developpeur Web/Web mobile ainsi qu' un master en biotechnologie option pharmacologie et industrie pharmaceutique"><i class="icon fa-solid fa-graduation-cap"></i>
+        <div class="nav btn-7 right" data-text="Certifié ISTQB Foundation (2024), avec une formation en développement Web/Web mobile et un Master en biotechnologie."><i class="icon fa-solid fa-graduation-cap"></i>
             <a class = "text">Parcours académique</a>
         </div>
-
-        
+        <div class="nav btn-8 right" data-text="Je cherche soit un stage (>=6mois), 
+           soit une alternance(vers un titre RNCP et une certification ISTQB plus spécifique), ou un CDD/CDI en tant 
+            que testeur logiciel, aux alentours d'Aix-En-Provence"><i class="fa-solid fa-magnifying-glass"></i>
+            <a class = "text">Ma recherche</a>
+        </div>
     <div class="globe-a"></div>
-    <div class="head">
-   
+    <div class="head" data-text="Ce portfolio a été conçu en HTML, CSS et JavaScript. Il est entièrement statique et ne repose sur aucune base de données. Les fonctionnalités situées à gauche illustrent certaines de mes compétences en test, notamment l'estimation de l'effort de test, 
+    la gestion des recettes, le suivi des bugs et le management des tests.">
         <div class="glass">
             <div class="eye">
                 <div class="ball"></div>
             </div>
         </div>
         <div class="line"></div>
+      
         <div class="glass">
-           
+            
             <div class="eye">
                 <div class="ball"></div>
             
@@ -134,9 +132,11 @@
       
 </div>
 <div class="globe-b"></div>
+
   </div>
+
     <script src="./js/index.js"></script>
-    <script src="./js/meteo.js"></script>
+    <script type="module" src="./js/meteo.js"></script>
     
 </body>
 </html>

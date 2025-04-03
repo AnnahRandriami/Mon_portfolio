@@ -1,7 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: #f4f4f4;
+    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/digitization-5231610_1280.jpg');
+    background-size: cover;
     color: #333;
 }
 
@@ -11,9 +12,10 @@ h2 {
 }
 
 .container {
+    max-width: 300px;
     max-width: 600px;
     margin: 20px auto;
-    background: white;
+    background-color: rgba(252, 243, 243, 0.781);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -68,4 +70,14 @@ button:hover {
     color: gray;
     font-size: small;
     font-style: italic;
+}
+
+.entete {
+    margin-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+}
+
+li {
+    cursor: pointer;
 }

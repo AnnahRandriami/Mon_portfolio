@@ -1,17 +1,38 @@
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+li {
+    cursor: pointer;
+}
+
+li:hover {
+    color: #0d3cca;
+    text-decoration: underline;
+}
+
 .my-tools,
 .tetris,
-.search,
 .pictures,
 .calcul,
+.search,
 .juste-prix {
 
     text-align: center;
     padding: 10px;
     display: inline-block;
     border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.909);
+    background-color: rgba(240, 248, 255, 0.158);
     z-index: 1;
 
+}
+
+#date-time,
+.search {
+    margin-top: 5px;
 }
 
 .calcul,
@@ -19,6 +40,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.sousTitre {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: small;
 }
 
 .my-tools {
@@ -79,15 +105,14 @@
     cursor: pointer;
 }
 
-.font {
-    margin-top: 10px;
-    font-size: 25px;
-    color: #690cb0;
-}
-
-.font:hover {
+.open-modal:hover {
+    background-color: rgba(13, 34, 227, 0.47);
     color: white;
 }
+
+
+
+
 
 .tetris {
     top: 40%;
@@ -116,7 +141,7 @@
     width: 40%;
     height: 90%;
     border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.811);
     color: black;
     background-size: cover;
     visibility: hidden;
@@ -137,37 +162,12 @@
     min-height: 450px;
 }
 
-.search-input {
-    border: none;
-    padding: 10px;
-    outline: none;
-    font-size: 16px;
-    width: 250px;
-}
-
-.search-input:focus {
-    border: 2px solid #a21fa64f;
-}
-
-.search-button {
-    background-color: #a21fa64f;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 50%;
+.entete {
     margin-left: 10px;
-    cursor: pointer;
-    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
 }
 
-.search-button:hover,
-.tetris:hover,
-.calcul:hover,
-.juste-prix:hover,
-.pictures:hover {
-    background-color: #2d078d;
-    color: white;
-}
 
 .content-modal-left.show {
     visibility: visible;
@@ -213,17 +213,35 @@
 #scoreTimer {
     display: flex;
     text-align: center;
+    font-weight: bold;
     justify-content: center;
     gap: 5px;
+    background-color: aliceblue;
 }
 
 #instruction {
     position: absolute;
     top: 35%;
     left: 10px;
-    font-size: 12px;
-    background-color: white;
+    font-size: 11px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 5px;
     opacity: 1;
+}
+
+#next {
+    position: absolute;
+    top: 35%;
+    right: 10px;
+    font-size: 11px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 5px;
+    opacity: 1;
+    height: 160px;
+    width: 100px;
+
 }
 
 #gameImage {
@@ -246,23 +264,15 @@
 #weather-info p {
     margin: 0;
     padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     font-weight: bold;
     font-size: small;
+    gap: 2px;
 }
 
-/* Réinitialisation des marges et du padding */
-body {
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-}
 
-/* Outils et boutons */
 .my-tools,
 .tetris,
-.search,
 .pictures,
 .calcul,
 .juste-prix {
@@ -270,7 +280,7 @@ body {
     padding: 10px;
     display: inline-block;
     border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.84);
     z-index: 1;
 }
 
@@ -315,7 +325,7 @@ body {
     transform: translate(-50%, -50%);
     width: 120px;
     height: 90px;
-    background-color: #a21fa64f;
+    background-color: rgba(252, 243, 243, 0.781);
     cursor: pointer;
 }
 
@@ -323,12 +333,10 @@ body {
 .font {
     margin-top: 10px;
     font-size: 25px;
-    color: #690cb0;
+    color: #0d3cca;
 }
 
-.font:hover {
-    color: white;
-}
+
 
 /* Position des boutons */
 .tetris {
@@ -381,38 +389,9 @@ body {
     min-height: 450px;
 }
 
-/* Styles de la recherche */
-.search-input {
-    border: none;
-    padding: 10px;
-    outline: none;
-    font-size: 16px;
-    width: 250px;
-}
 
-.search-input:focus {
-    border: 2px solid #a21fa64f;
-}
 
-.search-button {
-    background-color: #a21fa64f;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 50%;
-    margin-left: 10px;
-    cursor: pointer;
-    font-size: 18px;
-}
 
-.search-button:hover,
-.tetris:hover,
-.calcul:hover,
-.juste-prix:hover,
-.pictures:hover {
-    background-color: #2d078d;
-    color: white;
-}
 
 /* Contenu modal visible */
 .content-modal-left.show {
@@ -470,14 +449,6 @@ body {
     flex-wrap: wrap;
 }
 
-#weather-info p {
-    margin: 0;
-    padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: small;
-}
 
 /* Responsive Design - Media Queries */
 
@@ -541,20 +512,14 @@ body {
         height: 320px;
     }
 
-    /* Réduire l'espace et la taille des éléments pour les petits écrans */
     .search-input {
         width: 80%;
-        /* Réduire la taille du champ de recherche */
         font-size: 14px;
     }
 
-    .search-button {
-        padding: 8px;
-        font-size: 16px;
-    }
 }
 
 li {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: medium;
 }
