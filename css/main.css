@@ -7,12 +7,10 @@ body {
 .animation {
     height: 100vh;
     background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/digitization-5231610_1280.jpg');
-    background-size: auto;
-    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-attachment: fixed;
     gap: 20px;
     visibility: visible;
     opacity: 0;
