@@ -35,8 +35,6 @@
     }
 
 
-
-
     .globe-a,
     .globe-b {
         animation: none !important;
@@ -50,6 +48,9 @@
         z-index: 0;
         background: none;
         opacity: 0;
-        animation: none;
+        animation: none !important;
+        background-image: none !important;
+        display: none !important;
+
     }
 }
