@@ -1,13 +1,13 @@
 export const modalContent = `
   <h2 class="entete">Test automatisé de mon portfolio</h2>
     <ul>
-       <li><a class="clickable" data-url="./pages_html/demo2.html">Test statique avec ESLint</a></li>
-       <li><a class="clickable" data-url="./pages_html/tetris_test.html">Test de fonctionnalité du jeu Tetris en Selenium</a></li>
-       <li><a class="clickable" data-url="./pages_html/effort_test.html">Test de fonctionnalité de l'estimation de l'effort de test en Selenium</a></li>
+       <li><a class="clickable" data-url="./pages_html/demoESLINT.html">Test statique avec ESLint</a></li>
+       <li><a class="clickable" data-url="./pages_html/demoTetris.html">Test de fonctionnalité du jeu Tetris en Selenium</a></li>
+       <li><a class="clickable" data-url="./pages_html/demoEstimation.html">Test de fonctionnalité de l'estimation de l'effort de test en Selenium</a></li>
     </ul>
   <h2 class="entete">Test des fonctionnalités du site Shopify</h2>
     <ul>
-       <li><a class="clickable" data-url="./pages_html/shopify_login.html">Test de fonctionnalité connexion/inscription sur Selenium</a></li>
+       <li><a class="clickable" data-url="./pages_html/demoShopify.html">Test de fonctionnalité connexion/inscription sur Selenium</a></li>
     </ul>
       <h2 class="entete">Mes projets</h2>
     <ul>
