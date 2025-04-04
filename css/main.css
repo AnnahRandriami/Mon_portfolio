@@ -1,13 +1,13 @@
 body {
     padding: 0;
     margin: 0;
-
+    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/navyBlue.jpg');
+    background-size: cover;
+    overflow: hidden;
 }
 
 .animation {
     height: 100vh;
-    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/navyBlue.jpg');
-    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,6 +22,7 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
+    top: 55px;
     background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/bienvenu.jpg');
     background-size: cover;
     display: flex;
