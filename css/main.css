@@ -6,7 +6,7 @@ body {
 
 .animation {
     height: 100vh;
-    background-image: url('https://annahrandriami.github.io/Mon_portfolio/blob/master/image/navyBlue.jpg');
+    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/navyBlue.jpg');
     background-size: cover;
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-image: url('https://github.com/AnnahRandriami/Mon_portfolio/blob/master/image/bienvenu.jpg');
+    background-image: url('https://annahrandriami.github.io/Mon_portfolio/image/bienvenu.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
