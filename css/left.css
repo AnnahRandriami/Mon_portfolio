@@ -288,7 +288,7 @@ li:hover {
     z-index: 1;
 }
 
-/* Animation d'apparition */
+
 @keyframes pop-in {
     0% {
         opacity: 0;
@@ -301,7 +301,7 @@ li:hover {
     }
 }
 
-/* Animation spécifique pour .my-tools */
+
 .my-tools {
     top: 5px;
     right: 30%;
@@ -318,7 +318,6 @@ li:hover {
     transform: scale(1);
 }
 
-/* Positionnement des éléments */
 .tetris,
 .calcul,
 .juste-prix,
@@ -333,7 +332,7 @@ li:hover {
     cursor: pointer;
 }
 
-/* Styles de la police */
+
 .font {
     margin-top: 10px;
     font-size: 25px;
@@ -341,8 +340,6 @@ li:hover {
 }
 
 
-
-/* Position des boutons */
 .tetris {
     top: 40%;
     left: 30%;
@@ -363,7 +360,6 @@ li:hover {
     left: 70%;
 }
 
-/* Contenu modal */
 .content-modal-left {
     top: 10px;
     left: 8px;
@@ -383,7 +379,7 @@ li:hover {
     overflow: hidden;
 }
 
-/* Zone Tetris */
+
 #tetris {
     width: 225px;
     height: 450px;
@@ -394,16 +390,12 @@ li:hover {
 }
 
 
-
-
-
-/* Contenu modal visible */
 .content-modal-left.show {
     visibility: visible;
     opacity: 1;
 }
 
-/* Bouton de fermeture du modal */
+
 .close-modal {
     position: absolute;
     top: 5px;
@@ -422,7 +414,7 @@ li:hover {
     color: red;
 }
 
-/* Message de fin de jeu */
+
 #gameOverMessage {
     position: absolute;
     top: 50%;
@@ -439,7 +431,7 @@ li:hover {
     z-index: 10;
 }
 
-/* Affichage de l'heure et de la date */
+
 .date-time-display {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
@@ -453,75 +445,6 @@ li:hover {
     flex-wrap: wrap;
 }
 
-
-/* Responsive Design - Media Queries */
-
-/* Tablettes et appareils de taille moyenne */
-@media (max-width: 768px) {
-
-    .tetris,
-    .calcul,
-    .juste-prix,
-    .pictures {
-        width: 100px;
-        /* Réduire la taille des boutons */
-        height: 80px;
-    }
-
-    .font {
-        font-size: 20px;
-        /* Réduire la taille de la police */
-    }
-
-    /* Ajuster la taille des outils */
-    .my-tools {
-        width: 80%;
-        /* Utiliser une largeur en pourcentage pour les petits écrans */
-        top: 10%;
-        right: 10%;
-    }
-
-    #tetris {
-        width: 180px;
-        height: 360px;
-    }
-}
-
-/* Smartphones et petits appareils */
-@media (max-width: 480px) {
-
-    .tetris,
-    .calcul,
-    .juste-prix,
-    .pictures {
-        width: 80px;
-        height: 60px;
-        /* Taille encore plus petite pour les petits écrans */
-    }
-
-    .font {
-        font-size: 18px;
-        /* Réduire encore plus la taille des lettres */
-    }
-
-    .my-tools {
-        width: 90%;
-        /* Les outils prennent presque toute la largeur de l'écran */
-        top: 5%;
-        right: 5%;
-    }
-
-    #tetris {
-        width: 160px;
-        height: 320px;
-    }
-
-    .search-input {
-        width: 80%;
-        font-size: 14px;
-    }
-
-}
 
 li {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
