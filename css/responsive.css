@@ -1,4 +1,3 @@
-/* Pour les écrans de moins de 768px (tablettes et petits ordinateurs) */
 @media (max-width: 1040px),
 (max-height: 429px) {
     body {
@@ -35,6 +34,8 @@
     }
 
 
+
+
     .globe-a,
     .globe-b {
         animation: none !important;
@@ -48,9 +49,6 @@
         z-index: 0;
         background: none;
         opacity: 0;
-        animation: none !important;
-        background-image: none !important;
-        display: none !important;
-
+        animation: none;
     }
 }

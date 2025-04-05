@@ -10,8 +10,11 @@ body {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* Centrer verticalement les enfants */
+    justify-content: space-evenly;
+    /* Espacement équitable entre les enfants */
     gap: 20px;
+    /* Espacement entre les enfants */
     visibility: visible;
     opacity: 0;
 }
