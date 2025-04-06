@@ -1,4 +1,8 @@
 export const modalContent = `
+ <h2 class="entete">Planification de test</h2>
+    <ul>
+    <li><a class="clickable" data-url="https://trello.com/b/b3MJQeBb">Planification de test MyBankApp</a></li>
+    </ul>
   <h2 class="entete">Campagne de test</h2>
     <ul>
     <li><a class="clickable" data-url="https://trello.com/b/6ViI0MZW">Recette fonctionnelle MyBankApp</a></li>
