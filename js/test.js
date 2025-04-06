@@ -1,9 +1,9 @@
 export const modalContent = `
-  <h2 class="entete">Test Management</h2>
+  <h2 class="entete">Campagne de test</h2>
     <ul>
     <li><a class="clickable" data-url="https://trello.com/b/6ViI0MZW">Recette fonctionnelle MyBankApp</a></li>
-        <li><a class="clickable" data-url="https://github.com/AnnahRandriami/Mon_portfolio/issues">Test de fonctionnalité de mon portfolio</a></li>
-        <li><a class="clickable" data-url="https://github.com/AnnahRandriami/shopify-automation-tests/issues">Test de fonctionnalité du site Shopify</a></li>
+        <li><a class="clickable" data-url="https://github.com/AnnahRandriami/Mon_portfolio/issues">Campagne de test de mon portfolio</a></li>
+        <li><a class="clickable" data-url="https://github.com/AnnahRandriami/shopify-automation-tests/issues">Test de fonctionnalité connexion/inscription du site Shopify</a></li>
         <li><a class="clickable" data-url="https://trello.com/b/3HhyIjkA">Test de fonctionnalité du jeu Tetris avec Trello</a></li>
     
         </ul>

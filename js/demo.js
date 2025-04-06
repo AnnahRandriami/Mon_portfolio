@@ -1,5 +1,5 @@
 export const modalContent = `
-  <h2 class="entete">Test automatisé de mon portfolio</h2>
+  <h2 class="entete">Campagne de test de mon portfolio</h2>
     <ul>
        <li><a class="clickable" data-url="./pages_html/demoESLINT.html">Test statique avec ESLint</a></li>
        <li><a class="clickable" data-url="./pages_html/demoTetris.html">Test de fonctionnalité du jeu Tetris en Selenium</a></li>
